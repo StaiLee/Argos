@@ -12,33 +12,26 @@ import (
 	"net"
 	"net/http"
 	"os"
-	"os/signal"
 	"regexp"
-	"sort"
+	"runtime"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/charmbracelet/bubbles/spinner"
+	"github.com/charmbracelet/bubbles/viewport"
+	tea "github.com/charmbracelet/bubbletea"
+	"github.com/charmbracelet/lipgloss"
 )
 
-// --- 1. CONFIGURATION & CONSTANTES ---
+// --- 1. CONFIGURATION ---
 
 const (
-	AppVersion = "4.2.0 (The Oracle)"
+	AppVersion = "5.0.0(OMEGA)"
 	AppName    = "ARGOS PANOPTES"
-
-	// ANSI Colors
-	ColorReset  = "\033[0m"
-	ColorRed    = "\033[31m"
-	ColorGreen  = "\033[32m"
-	ColorYellow = "\033[33m"
-	ColorBlue   = "\033[34m"
-	ColorPurple = "\033[35m"
-	ColorCyan   = "\033[36m"
-	ColorWhite  = "\033[37m"
-	ColorBold   = "\033[1m"
-	ColorGrey   = "\033[90m"
-	ColorOrange = "\033[38;5;208m"
+	ColorReset = "\033[0m"
+	ColorGreen = "\033[32m"
 )
 
 var CommonPorts = map[int]string{
@@ -48,41 +41,575 @@ var CommonPorts = map[int]string{
 	8443: "HTTPS-Alt", 9000: "Portainer", 27017: "MongoDB",
 }
 
-// Score de risque
 var RiskWeights = map[int]int{
 	21: 20, 23: 30, 445: 25, 3389: 15, 80: 5, 443: 0, 22: 5,
 }
 
-// --- 2. STRUCTURES DE DONNÉES ---
+// --- 2. THEMES ---
+
+type Theme struct {
+	Primary   lipgloss.Color
+	Secondary lipgloss.Color
+	Dark      lipgloss.Color
+	Text      lipgloss.Color
+	Gradient  []string
+}
+
+var (
+	ThemeBlitz = Theme{
+		Primary:   lipgloss.Color("#FF2200"), // Neon Red
+		Secondary: lipgloss.Color("#FF8800"), // Magma Orange
+		Dark:      lipgloss.Color("#1a0500"),
+		Text:      lipgloss.Color("#FFCC00"),
+		Gradient:  []string{"#FF0000", "#FF4400", "#FF8800"},
+	}
+	ThemeTitan = Theme{
+		Primary:   lipgloss.Color("#00FFFF"), // Cyan
+		Secondary: lipgloss.Color("#0066FF"), // Electric Blue
+		Dark:      lipgloss.Color("#00051a"),
+		Text:      lipgloss.Color("#E0FFFF"),
+		Gradient:  []string{"#0000FF", "#0088FF", "#00FFFF"},
+	}
+	ThemeShadow = Theme{
+		Primary:   lipgloss.Color("#FFFFFF"), // Pure White
+		Secondary: lipgloss.Color("#666666"), // Grey
+		Dark:      lipgloss.Color("#111111"),
+		Text:      lipgloss.Color("#AAAAAA"),
+		Gradient:  []string{"#333333", "#888888", "#FFFFFF"},
+	}
+	ThemeScout = Theme{
+		Primary:   lipgloss.Color("#00FF00"), // Matrix Green
+		Secondary: lipgloss.Color("#004400"),
+		Dark:      lipgloss.Color("#001100"),
+		Text:      lipgloss.Color("#AAFFAA"),
+		Gradient:  []string{"#003300", "#00AA00", "#00FF00"},
+	}
+)
+
+func renderGradient(text string, colors []string) string {
+	if len(text) == 0 {
+		return ""
+	}
+	var s strings.Builder
+	for i, char := range text {
+		idx := int(float64(i) / float64(len(text)) * float64(len(colors)-1))
+		s.WriteString(lipgloss.NewStyle().Foreground(lipgloss.Color(colors[idx])).Render(string(char)))
+	}
+	return s.String()
+}
+
+// --- 3. STRUCTURES ---
 
 type ScanTarget struct {
 	IP   string
 	Port int
 }
-
 type ScanResult struct {
-	IP        string `json:"ip"`
-	Port      int    `json:"port"`
-	Service   string `json:"service"`
-	Banner    string `json:"banner,omitempty"`
-	WebTitle  string `json:"web_title,omitempty"`
-	WebServer string `json:"web_server,omitempty"`
-	RiskScore int    `json:"risk_score"`
+	IP, Service, Banner, WebTitle, WebServer string
+	Port, RiskScore                          int
+	Timestamp                                time.Time
 }
-
 type ScanProfile struct {
-	ID        string
-	Name      string
-	Desc      string
-	Tactics   string
-	Timeout   time.Duration
-	Delay     time.Duration
-	Threads   int
-	PortRange string
-	Randomize bool
+	ID, Name, Desc string
+	Timeout, Delay time.Duration
+	Threads        int
+	PortRange      string
+	Randomize      bool
+	Theme          Theme
 }
 
-// --- 3. INTELLIGENCE MODULES ---
+// --- 4. HELP MODEL (LE MANUEL ULTIME) ---
+
+type helpModel struct {
+	pages                  []string
+	pageIdx, width, height int
+	quitting               bool
+}
+
+func initialHelpModel() helpModel { return helpModel{pages: buildPages(), pageIdx: 0} }
+func (m helpModel) Init() tea.Cmd { return nil }
+func (m helpModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+	switch msg := msg.(type) {
+	case tea.KeyMsg:
+		switch msg.String() {
+		case "q", "ctrl+c":
+			m.quitting = true
+			return m, tea.Quit
+		case "right", "l", "enter", " ":
+			if m.pageIdx < len(m.pages)-1 {
+				m.pageIdx++
+			}
+		case "left", "h", "backspace":
+			if m.pageIdx > 0 {
+				m.pageIdx--
+			}
+		}
+	case tea.WindowSizeMsg:
+		m.width = msg.Width
+		m.height = msg.Height
+	}
+	return m, nil
+}
+func (m helpModel) View() string {
+	if m.quitting {
+		return ""
+	}
+	content := m.pages[m.pageIdx]
+
+	navStyle := lipgloss.NewStyle().Foreground(lipgloss.Color("#555"))
+	activeDot := lipgloss.NewStyle().Foreground(ThemeTitan.Primary).Render("●")
+	inactiveDot := lipgloss.NewStyle().Foreground(lipgloss.Color("#333")).Render("○")
+
+	dots := ""
+	for i := 0; i < len(m.pages); i++ {
+		if i == m.pageIdx {
+			dots += activeDot + " "
+		} else {
+			dots += inactiveDot + " "
+		}
+	}
+
+	nav := fmt.Sprintf("\n%s\n%s", dots, navStyle.Render("[ARROWS] FLIP PAGE  •  [Q] EXIT SYSTEM"))
+
+	frame := lipgloss.NewStyle().Border(lipgloss.DoubleBorder()).BorderForeground(ThemeTitan.Primary).Padding(1, 3).Width(90).Align(lipgloss.Center)
+	return lipgloss.Place(m.width, m.height, lipgloss.Center, lipgloss.Center, lipgloss.JoinVertical(lipgloss.Center, frame.Render(content), nav))
+}
+
+func buildPages() []string {
+	// Styles
+	t := lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("#FFF")).Background(lipgloss.Color("#F06")).Padding(0, 1).Render
+	h := lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("#0FF")).MarginTop(1).Render
+	c := lipgloss.NewStyle().Foreground(lipgloss.Color("#0F0")).Background(lipgloss.Color("#222")).Padding(0, 1).Render
+	dim := lipgloss.NewStyle().Foreground(lipgloss.Color("#666")).Render
+
+	// PAGE 1: COVER
+	p1 := fmt.Sprintf(`
+%s
+
+ARGOS PANOPTES by StaiLee
+   
+
+%s
+%s
+
+"The giant with a hundred eyes."
+`, renderGradient("/// SIERRA TANGO ALPHA INDIA OMEGA ///", ThemeBlitz.Gradient),
+		dim("Authorized Personnel Only"),
+		dim("System Ready."))
+
+	// PAGE 2: ARCHITECTURE
+	p2 := fmt.Sprintf(`
+%s
+
+Argos utilizes a massive concurrent architecture based on Golang Goroutines.
+Unlike traditional threaded scanners, it spawns thousands of micro-threads.
+
+%s
+1. %s : Generates targets (IP:Port) into a buffered channel.
+2. %s : Consume targets and execute TCP Handshake.
+3. %s : Analyzes Banner, HTTP Headers, and calculates Risk Score.
+4. %s : Renders the TUI Dashboard in real-time.
+
+%s
+Argos performs a full TCP Connect Scan (Syscall connect()).
+SYN-ACK = Open. RST = Closed. Timeout = Filtered.
+`, t("SYSTEM ARCHITECTURE"), h("WORKFLOW"), c("Feeder"), c("Worker Pool"), c("The Oracle"), c("UI Engine"), h("NETWORK PROTOCOL"))
+
+	// PAGE 3: MODES
+	p3 := fmt.Sprintf(`
+%s
+
+%s
+%s
+Target: Initial Recon / Daily Checks.
+Specs:  Balanced speed (500 threads). Default config.
+
+%s
+%s
+Target: Red Teaming / Evasion.
+Specs:  Slow, Randomized Jitter (0-1.5s), Anti-IDS Shuffling.
+Color:  Ghost White.
+
+%s
+%s
+Target: CTF / Internal Networks / Destruction.
+Specs:  MAX SPEED (2000 threads), No Delay. Fire at will.
+Color:  Neon Red.
+
+%s
+%s
+Target: Full Audits.
+Specs:  Deep Scan (65,535 ports). Heavy load.
+Color:  Cyan.
+`, t("TACTICAL PROFILES"),
+		h("1. SCOUT"), c("-mode scout"),
+		h("2. SHADOW (Stealth)"), c("-mode shadow"),
+		h("3. BLITZ (Aggressive)"), c("-mode blitz"),
+		h("4. TITAN (Audit)"), c("-mode titan"))
+
+	// PAGE 4: ADVANCED USAGE
+	p4 := fmt.Sprintf(`
+%s
+
+%s
+Find all web servers on a subnet in seconds:
+%s
+
+%s
+Scan a specific server slowly to avoid detection:
+%s
+
+%s
+Generate a client-ready HTML report with full details:
+%s
+
+%s
+Randomize port order to bypass simple firewall rules:
+%s
+`, t("ADVANCED OPERATIONS"),
+		h("SUBNET SWEEP"), c("argos -host 192.168.1.0/24 -p 80,443,8080 -mode blitz"),
+		h("STEALTH MISSION"), c("argos -host 10.10.10.5 -mode shadow -p 1-5000"),
+		h("FULL AUDIT"), c("argos -host 10.10.50.2 -mode titan -html report.html"),
+		h("EVASION"), c("argos -host <IP> -random -mode shadow"))
+
+	// PAGE 5: DISCLAIMER
+	p5 := fmt.Sprintf(`
+%s
+
+Argos is intended for %s and %s purposes only.
+Scanning networks without permission is illegal.
+
+The developers assume no liability for misuse of this tool.
+
+%s
+`, t("LEGAL DISCLAIMER"), c("educational"), c("authorized testing"), dim("© 2025 Argos Project"))
+
+	return []string{p1, p2, p3, p4, p5}
+}
+
+// --- 5. SCAN MODEL ---
+
+type tickMsg time.Time
+
+type scanModel struct {
+	results                             []ScanResult
+	resultsChan                         chan *ScanResult
+	viewport                            viewport.Model
+	spinner                             spinner.Model
+	totalJobs, completed, width, height int
+	finished, quitting                  bool
+	startTime                           time.Time
+	profile                             ScanProfile
+	targetStr                           string
+	theme                               Theme
+	countCritical, countHigh, countLow  int
+	logBuffer                           string
+
+	// Real Telemetry
+	sparkline  []int
+	goroutines int
+	ramUsage   string
+	localIP    string
+}
+
+type scanResultMsg *ScanResult
+type scanFinishedMsg struct{}
+
+func initialScanModel(rChan chan *ScanResult, total int, prof ScanProfile, target string) scanModel {
+	// CUSTOM SPINNER & VIEWPORT
+	s := spinner.New()
+	s.Spinner = spinner.Pulse
+	s.Style = lipgloss.NewStyle().Foreground(prof.Theme.Primary)
+	vp := viewport.New(0, 0)
+
+	locIP := "127.0.0.1"
+	if conn, err := net.Dial("udp", "8.8.8.8:80"); err == nil {
+		locIP = conn.LocalAddr().(*net.UDPAddr).IP.String()
+		conn.Close()
+	}
+
+	return scanModel{
+		results: make([]ScanResult, 0), resultsChan: rChan, spinner: s, viewport: vp,
+		totalJobs: total, completed: 0, startTime: time.Now(), profile: prof, targetStr: target, theme: prof.Theme,
+		sparkline: make([]int, 30), localIP: locIP,
+	}
+}
+
+func waitForResult(sub chan *ScanResult) tea.Cmd {
+	return func() tea.Msg {
+		res, ok := <-sub
+		if !ok {
+			return scanFinishedMsg{}
+		}
+		return scanResultMsg(res)
+	}
+}
+
+func tickCmd() tea.Cmd {
+	return tea.Tick(100*time.Millisecond, func(t time.Time) tea.Msg { return tickMsg(t) })
+}
+
+// --- 6. LOGIC ---
+
+func (m scanModel) Init() tea.Cmd {
+	return tea.Batch(m.spinner.Tick, waitForResult(m.resultsChan), tickCmd())
+}
+
+func (m scanModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+	switch msg := msg.(type) {
+	case tea.KeyMsg:
+		if msg.String() == "q" || msg.Type == tea.KeyCtrlC {
+			m.quitting = true
+			return m, tea.Quit
+		}
+		var cmd tea.Cmd
+		m.viewport, cmd = m.viewport.Update(msg)
+		return m, cmd
+
+	case tea.WindowSizeMsg:
+		m.width = msg.Width
+		m.height = msg.Height
+		h := m.height - 9
+		if h < 10 {
+			h = 10
+		}
+		m.viewport.Width = int(float64(m.width) * 0.60)
+		m.viewport.Height = h
+		return m, nil
+
+	case spinner.TickMsg:
+		if m.finished {
+			return m, nil
+		}
+		var cmd tea.Cmd
+		m.spinner, cmd = m.spinner.Update(msg)
+		return m, cmd
+
+	case tickMsg:
+		// TELEMETRIE
+		activity := 0
+		if m.completed > 0 && !m.finished {
+			activity = rand.Intn(3)
+		}
+		m.sparkline = append(m.sparkline[1:], activity)
+
+		var mem runtime.MemStats
+		runtime.ReadMemStats(&mem)
+		m.ramUsage = fmt.Sprintf("%d MB", mem.Alloc/1024/1024)
+		m.goroutines = runtime.NumGoroutine()
+
+		if !m.finished {
+			return m, tickCmd()
+		}
+		return m, nil
+
+	case scanResultMsg:
+		m.completed++
+		var cmds []tea.Cmd
+		if msg != nil {
+			m.results = append(m.results, *msg)
+			if (*msg).RiskScore >= 20 {
+				m.countCritical++
+			} else if (*msg).RiskScore >= 10 {
+				m.countHigh++
+			} else {
+				m.countLow++
+			}
+
+			// Boost sparkline
+			m.sparkline[len(m.sparkline)-1] = 8
+
+			line := formatLogLine(*msg, m.theme)
+			m.logBuffer += line + "\n"
+			m.viewport.SetContent(m.logBuffer)
+			m.viewport.GotoBottom()
+		}
+		cmds = append(cmds, waitForResult(m.resultsChan))
+		return m, tea.Batch(cmds...)
+
+	case scanFinishedMsg:
+		m.finished = true
+		return m, nil
+	}
+	return m, nil
+}
+
+// --- 7. VIEW (UI GOD MODE) ---
+
+// Custom Bar Renderer (Correction Couleur & Fluidité)
+func renderCustomBar(width int, pct float64, c lipgloss.Color) string {
+	if pct > 1.0 {
+		pct = 1.0
+	}
+	wFilled := int(float64(width) * pct)
+	if wFilled < 0 {
+		wFilled = 0
+	}
+	wEmpty := width - wFilled
+	if wEmpty < 0 {
+		wEmpty = 0
+	}
+
+	filled := strings.Repeat("█", wFilled)
+	empty := strings.Repeat("░", wEmpty)
+
+	return lipgloss.NewStyle().Foreground(c).Render(filled) + lipgloss.NewStyle().Foreground(lipgloss.Color("#333")).Render(empty)
+}
+
+func (m scanModel) View() string {
+	if m.quitting {
+		return ""
+	}
+
+	cPrim := m.theme.Primary
+	cSec := m.theme.Secondary
+	cDark := m.theme.Dark
+
+	border := lipgloss.NewStyle().Border(lipgloss.RoundedBorder()).BorderForeground(cSec)
+	if m.finished {
+		border = border.BorderForeground(cPrim)
+	}
+
+	// HEADER
+	headTxt := fmt.Sprintf(" ARGOS %s │ OPERATION: %s ", AppVersion, m.profile.Name)
+	title := renderGradient(headTxt, m.theme.Gradient)
+	header := border.Copy().Width(m.width - 2).Align(lipgloss.Center).Render(title)
+
+	// LAYOUT
+	leftW := int(float64(m.width) * 0.30)
+	rightW := m.width - leftW - 6
+
+	// LEFT PANEL (TELEMETRY)
+	lbl := lipgloss.NewStyle().Foreground(cPrim).Bold(true).Render
+	val := lipgloss.NewStyle().Foreground(m.theme.Text).Render
+	dim := lipgloss.NewStyle().Foreground(lipgloss.Color("#444")).Render
+
+	elapsed := time.Since(m.startTime).Round(time.Second)
+	rate := 0.0
+	if time.Since(m.startTime).Seconds() > 0 {
+		rate = float64(m.completed) / time.Since(m.startTime).Seconds()
+	}
+
+	eta := "CALCULATING..."
+	if rate > 0 {
+		rem := time.Duration(int(float64(m.totalJobs-m.completed)/rate)) * time.Second
+		eta = rem.String()
+	}
+	if m.finished {
+		eta = "0s"
+	}
+
+	// Sparkline Render
+	spark := ""
+	bars := []string{" ", "▂", "▃", "▄", "▅", "▆", "▇", "█"}
+	for _, v := range m.sparkline {
+		if v >= len(bars) {
+			v = len(bars) - 1
+		}
+		spark += bars[v]
+	}
+	sparkRender := lipgloss.NewStyle().Foreground(cSec).Render(spark)
+
+	// Panel Assembly
+	blockTarget := lipgloss.JoinVertical(lipgloss.Left,
+		lbl("TARGET IDENTITY"), val(m.targetStr), dim("Scanning Protocols Active"))
+
+	blockTime := lipgloss.JoinVertical(lipgloss.Left,
+		lbl("MISSION CLOCK"), val(elapsed.String()), dim("ETA: "+eta))
+
+	blockProgress := lipgloss.JoinVertical(lipgloss.Left,
+		lbl("PROGRESSION"), val(fmt.Sprintf("%d/%d", m.completed, m.totalJobs)), dim(fmt.Sprintf("%.0f packets/sec", rate)))
+
+	blockSys := lipgloss.JoinVertical(lipgloss.Left,
+		lbl("SYSTEM DIAGNOSTICS"),
+		val(fmt.Sprintf("RAM: %s", m.ramUsage)),
+		val(fmt.Sprintf("GRT: %d", m.goroutines)),
+		val(fmt.Sprintf("IP : %s", m.localIP)))
+
+	// Barres de risque
+	totRisk := float64(m.countCritical + m.countHigh + m.countLow)
+	if totRisk == 0 {
+		totRisk = 1
+	}
+	lenCrit := int((float64(m.countCritical) / totRisk) * 10)
+	lenHigh := int((float64(m.countHigh) / totRisk) * 10)
+	lenLow := int((float64(m.countLow) / totRisk) * 10)
+
+	blockRisk := lipgloss.JoinVertical(lipgloss.Left,
+		lbl("THREAT INTELLIGENCE"),
+		fmt.Sprintf("%s %s %d", lipgloss.NewStyle().Foreground(lipgloss.Color("#F00")).Render("CRT"), strings.Repeat("█", lenCrit), m.countCritical),
+		fmt.Sprintf("%s %s %d", lipgloss.NewStyle().Foreground(lipgloss.Color("#FA0")).Render("HGH"), strings.Repeat("█", lenHigh), m.countHigh),
+		fmt.Sprintf("%s %s %d", lipgloss.NewStyle().Foreground(lipgloss.Color("#0F0")).Render("LOW"), strings.Repeat("█", lenLow), m.countLow),
+	)
+
+	leftContent := lipgloss.JoinVertical(lipgloss.Left,
+		blockTarget, "\n", blockTime, "\n", blockProgress, "\n", blockRisk, "\n", blockSys, "\n", lbl("NET ACTIVITY"), sparkRender,
+	)
+
+	leftP := border.Copy().Width(leftW).Height(m.viewport.Height).Background(cDark).Padding(1, 2).Render(leftContent)
+
+	// RIGHT PANEL (LOGS)
+	rightP := border.Copy().Width(rightW).Height(m.viewport.Height).Render(m.viewport.View())
+
+	// FOOTER
+	spin := m.spinner.View()
+	msg := "SCANNING SECTORS..."
+	if m.finished {
+		spin = "✅"
+		msg = "MISSION ACCOMPLIE."
+	}
+
+	// BARRE DE PROGRESSION CUSTOM
+	barWidth := m.width - 40
+	pct := float64(m.completed) / float64(m.totalJobs)
+	barRender := renderCustomBar(barWidth, pct, cPrim)
+	pctText := fmt.Sprintf("%.0f%%", pct*100)
+
+	inf := lipgloss.JoinHorizontal(lipgloss.Center,
+		lipgloss.NewStyle().Width(4).Render(spin),
+		lipgloss.NewStyle().Foreground(m.theme.Text).Width(25).Render(msg),
+		barRender,
+		lipgloss.NewStyle().Width(6).Align(lipgloss.Right).Foreground(cPrim).Render(pctText),
+	)
+	foot := border.Copy().Width(m.width - 2).Render(
+		lipgloss.JoinVertical(lipgloss.Center, inf, lipgloss.NewStyle().Foreground(lipgloss.Color("#555")).Render("[Q] DISCONNECT   [ARROWS] SCROLL FEED")),
+	)
+
+	return lipgloss.JoinVertical(lipgloss.Left, header, lipgloss.JoinHorizontal(lipgloss.Top, leftP, rightP), foot)
+}
+
+func formatLogLine(r ScanResult, t Theme) string {
+	ts := r.Timestamp.Format("15:04:05.000")
+	tsStyle := lipgloss.NewStyle().Foreground(lipgloss.Color("#444")).Render(ts)
+
+	icon := "[TCP]"
+	style := lipgloss.NewStyle().Foreground(t.Secondary)
+
+	if r.RiskScore >= 20 {
+		icon = "[CRT]"
+		style = style.Copy().Foreground(lipgloss.Color("#FF0000")).Bold(true)
+	} else if r.WebTitle != "" {
+		icon = "[WEB]"
+		style = style.Copy().Foreground(t.Primary)
+	}
+
+	info := fmt.Sprintf("%-16s:%-5d", r.IP, r.Port)
+	srv := fmt.Sprintf("%s", r.Service)
+	extra := ""
+	if r.WebTitle != "" {
+		extra = " │ " + r.WebTitle
+	}
+
+	return fmt.Sprintf("%s %s %s %s%s",
+		tsStyle,
+		style.Render(icon),
+		lipgloss.NewStyle().Foreground(lipgloss.Color("#EEE")).Render(info),
+		lipgloss.NewStyle().Foreground(t.Text).Faint(true).Render(srv),
+		lipgloss.NewStyle().Foreground(t.Primary).Render(extra),
+	)
+}
+
+// --- 8. WORKERS ---
 
 func probeHTTP(ip string, port int, timeout time.Duration) (string, string) {
 	scheme := "http"
@@ -90,41 +617,26 @@ func probeHTTP(ip string, port int, timeout time.Duration) (string, string) {
 		scheme = "https"
 	}
 	url := fmt.Sprintf("%s://%s:%d", scheme, ip, port)
-
-	tr := &http.Transport{
-		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
-	}
-	client := &http.Client{
-		Transport: tr,
-		Timeout:   timeout + 500*time.Millisecond,
-	}
-
+	client := &http.Client{Transport: &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}, Timeout: timeout + 500*time.Millisecond}
 	resp, err := client.Get(url)
 	if err != nil {
 		return "", ""
 	}
 	defer resp.Body.Close()
-
-	serverHeader := resp.Header.Get("Server")
-	if serverHeader == "" {
-		serverHeader = "Hidden"
+	srv := resp.Header.Get("Server")
+	if srv == "" {
+		srv = "Hidden"
 	}
-
-	buffer := make([]byte, 2048)
-	n, _ := io.ReadFull(resp.Body, buffer)
-	content := string(buffer[:n])
-
+	buf := make([]byte, 2048)
+	n, _ := io.ReadFull(resp.Body, buf)
 	re := regexp.MustCompile(`(?i)<title>(.*?)</title>`)
-	matches := re.FindStringSubmatch(content)
+	matches := re.FindStringSubmatch(string(buf[:n]))
 	title := "No Title"
 	if len(matches) > 1 {
 		title = strings.TrimSpace(matches[1])
 	}
-
-	return title, serverHeader
+	return title, srv
 }
-
-// --- 4. LOGIQUE MÉTIER (CORE) ---
 
 func scanPort(ctx context.Context, target ScanTarget, timeout time.Duration) *ScanResult {
 	select {
@@ -132,356 +644,98 @@ func scanPort(ctx context.Context, target ScanTarget, timeout time.Duration) *Sc
 		return nil
 	default:
 	}
-
-	address := fmt.Sprintf("%s:%d", target.IP, target.Port)
-	d := net.Dialer{Timeout: timeout}
-
-	conn, err := d.DialContext(ctx, "tcp", address)
+	addr := net.JoinHostPort(target.IP, strconv.Itoa(target.Port))
+	conn, err := net.DialTimeout("tcp", addr, timeout)
 	if err != nil {
 		return nil
 	}
 	defer conn.Close()
-
 	conn.SetReadDeadline(time.Now().Add(300 * time.Millisecond))
-	buffer := make([]byte, 256)
-	n, _ := conn.Read(buffer)
-	banner := strings.TrimSpace(string(buffer[:n]))
-
-	banner = strings.Map(func(r rune) rune {
+	buf := make([]byte, 256)
+	n, _ := conn.Read(buf)
+	banner := strings.Map(func(r rune) rune {
 		if r >= 32 && r <= 126 {
 			return r
 		}
 		return -1
-	}, banner)
-
-	service := CommonPorts[target.Port]
-	if service == "" {
-		service = "TCP"
+	}, string(buf[:n]))
+	svc := CommonPorts[target.Port]
+	if svc == "" {
+		svc = "TCP"
 	}
-
-	webTitle := ""
-	webServer := ""
-	if target.Port == 80 || target.Port == 443 || target.Port == 8080 || target.Port == 8443 {
-		webTitle, webServer = probeHTTP(target.IP, target.Port, timeout)
+	wTitle, wSrv := "", ""
+	if target.Port == 80 || target.Port == 443 || target.Port == 8080 {
+		wTitle, wSrv = probeHTTP(target.IP, target.Port, timeout)
 	}
-
 	risk := RiskWeights[target.Port]
 	if risk == 0 {
 		risk = 1
 	}
-
-	return &ScanResult{
-		IP:        target.IP,
-		Port:      target.Port,
-		Service:   service,
-		Banner:    banner,
-		WebTitle:  webTitle,
-		WebServer: webServer,
-		RiskScore: risk,
-	}
+	return &ScanResult{IP: target.IP, Port: target.Port, Service: svc, Banner: banner, WebTitle: wTitle, WebServer: wSrv, RiskScore: risk, Timestamp: time.Now()}
 }
 
-func worker(ctx context.Context, jobs <-chan ScanTarget, results chan<- *ScanResult, wg *sync.WaitGroup, profile ScanProfile) {
+func worker(ctx context.Context, jobs <-chan ScanTarget, results chan<- *ScanResult, wg *sync.WaitGroup, prof ScanProfile) {
 	defer wg.Done()
-	for {
+	for target := range jobs {
 		select {
 		case <-ctx.Done():
 			return
-		case target, ok := <-jobs:
-			if !ok {
-				return
+		default:
+			if prof.Delay > 0 {
+				time.Sleep(time.Duration(rand.Intn(int(prof.Delay))))
 			}
-			if profile.Delay > 0 {
-				jitter := time.Duration(rand.Intn(int(profile.Delay)/2) + int(profile.Delay)/2)
-				time.Sleep(jitter)
-			}
-			res := scanPort(ctx, target, profile.Timeout)
-			if res != nil {
-				results <- res
-			} else {
-				results <- nil
-			}
+			res := scanPort(ctx, target, prof.Timeout)
+			results <- res
 		}
 	}
 }
 
-// --- 5. VISUALS & REPORTING ---
-
-func generateHTMLReport(filename string, results []ScanResult) {
-	html := `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ARGOS RECON REPORT</title>
-    <style>
-        body { background-color: #0d0d0d; color: #00ff41; font-family: 'Courier New', monospace; padding: 20px; }
-        h1 { text-align: center; text-shadow: 0 0 10px #00ff41; border-bottom: 2px solid #00ff41; padding-bottom: 10px; }
-        .stats { display: flex; justify-content: space-around; margin: 20px 0; background: #1a1a1a; padding: 15px; border-radius: 5px; }
-        .stat-box { text-align: center; }
-        .stat-val { font-size: 2em; font-weight: bold; color: #fff; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #333; padding: 12px; text-align: left; }
-        th { background-color: #1a1a1a; color: #fff; }
-        tr:hover { background-color: #111; }
-        .critical { color: #ff3333; font-weight: bold; }
-        .web-info { color: #00bfff; font-size: 0.9em; }
-        .footer { margin-top: 50px; text-align: center; color: #555; font-size: 0.8em; }
-    </style>
-</head>
-<body>
-    <h1>👁️ ARGOS PANOPTES // INTELLIGENCE REPORT</h1>
-    <div class="stats">
-        <div class="stat-box"><div class="stat-val">` + strconv.Itoa(len(results)) + `</div><div>Open Ports</div></div>
-        <div class="stat-box"><div class="stat-val">TARGET</div><div>Secured</div></div>
-        <div class="stat-box"><div class="stat-val">` + time.Now().Format("15:04:05") + `</div><div>Time</div></div>
-    </div>
-    <table>
-        <tr><th>IP</th><th>PORT</th><th>SERVICE</th><th>DETAILS / BANNER</th><th>RISK</th></tr>`
-
-	for _, r := range results {
-		details := r.Banner
-		if r.WebTitle != "" {
-			details = fmt.Sprintf("<span class='web-info'>[WEB] %s (%s)</span>", r.WebTitle, r.WebServer)
-		} else if details == "" {
-			details = "-"
-		}
-
-		riskClass := ""
-		riskTxt := "LOW"
-		if r.RiskScore >= 20 {
-			riskClass = "critical"
-			riskTxt = "CRITICAL"
-		} else if r.RiskScore >= 10 {
-			riskTxt = "HIGH"
-		}
-
-		html += fmt.Sprintf("<tr><td>%s</td><td>%d</td><td>%s</td><td>%s</td><td class='%s'>%s</td></tr>",
-			r.IP, r.Port, r.Service, details, riskClass, riskTxt)
-	}
-
-	html += `</table><div class="footer">GENERATED BY ARGOS PANOPTES v4.2.0</div></body></html>`
-
-	_ = os.WriteFile(filename, []byte(html), 0644)
-	fmt.Printf("%s[✓] Rapport HTML généré : %s%s\n", ColorGreen, filename, ColorReset)
-}
-
-func printRiskBar(totalRisk int) {
-	level := "LOW"
-	color := ColorGreen
-	barLength := 20
-
-	fill := 0
-	if totalRisk > 0 {
-		fill = totalRisk / 5
-	}
-	if fill > barLength {
-		fill = barLength
-	}
-
-	if totalRisk > 50 {
-		level = "CRITICAL"
-		color = ColorRed
-	} else if totalRisk > 20 {
-		level = "ELEVATED"
-		color = ColorOrange
-	}
-
-	bar := strings.Repeat("█", fill) + strings.Repeat("░", barLength-fill)
-	fmt.Printf("\n%sTHREAT ASSESSMENT:%s\n", ColorBold, ColorReset)
-	fmt.Printf("[%s%s%s] LEVEL: %s%s%s (Score: %d)\n", color, bar, ColorReset, color, level, ColorReset, totalRisk)
-}
-
-// --- 6. VISUELS ---
-
-func rgb(r, g, b int) string { return fmt.Sprintf("\033[38;2;%d;%d;%dm", r, g, b) }
-
-func gradient(text string, startR, startG, startB, endR, endG, endB int) string {
-	var result string
-	length := len(text)
-	if length == 0 {
-		return text
-	}
-	for i, char := range text {
-		r := startR + int(float64(endR-startR)*float64(i)/float64(length))
-		g := startG + int(float64(endG-startG)*float64(i)/float64(length))
-		b := startB + int(float64(endB-startB)*float64(i)/float64(length))
-		result += rgb(r, g, b) + string(char)
-	}
-	return result + ColorReset
-}
-
-func printBanner(modeID string) {
-	lines := []string{
-		`    ___    ____  ______  ____  _____`,
-		`   /   |  / __ \/ ____/ / __ \/ ___/`,
-		`  / /| | / /_/ / / __  / / / /\__ \ `,
-		` / ___ |/ _, _/ /_/ / / /_/ /___/ / `,
-		`/_/  |_/_/ |_|\____/  \____//____/  `,
-	}
-	var sR, sG, sB, eR, eG, eB int
-	var subTitleColor string
-	switch modeID {
-	case "shadow":
-		sR, sG, sB = 40, 40, 40
-		eR, eG, eB = 220, 220, 220
-		subTitleColor = ColorGrey
-	case "blitz":
-		sR, sG, sB = 255, 255, 0
-		eR, eG, eB = 255, 0, 0
-		subTitleColor = ColorYellow
-	case "titan":
-		sR, sG, sB = 0, 0, 150
-		eR, eG, eB = 0, 255, 255
-		subTitleColor = ColorCyan
-	default:
-		sR, sG, sB = 0, 100, 0
-		eR, eG, eB = 50, 255, 50
-		subTitleColor = ColorGreen
-	}
-	fmt.Println()
-	for _, line := range lines {
-		fmt.Println(gradient(line, sR, sG, sB, eR, eG, eB))
-	}
-	fmt.Println()
-
-	if modeID != "help" {
-		fmt.Printf("  :: %s :: %sMODE %s ACTIVATED%s\n", AppVersion, subTitleColor, strings.ToUpper(modeID), ColorReset)
-	} else {
-		fmt.Printf("  :: %s :: %sORACLE SYSTEM ONLINE%s\n", AppVersion, subTitleColor, ColorReset)
-	}
-	fmt.Println(strings.Repeat("-", 60))
-}
-
-func updateProgressBar(current, total int) {
-	percent := float64(current) / float64(total) * 100
-	width := 40
-	completed := int(float64(width) * (float64(current) / float64(total)))
-	bar := strings.Repeat("█", completed) + strings.Repeat("░", width-completed)
-	color := ColorBlue
-	if percent > 90 {
-		color = ColorGreen
-	}
-	fmt.Printf("\r%s[%s] %.1f%%%s", color, bar, percent, ColorReset)
-}
-
-// --- 7. MAIN ---
+// --- 9. MAIN ---
 
 func main() {
 	profiles := map[string]ScanProfile{
-		"scout": {
-			ID: "scout", Name: "SCOUT",
-			Desc:    "Standard Recon (Default). Top 1024 ports.",
-			Tactics: "Use for initial discovery. Balanced speed/noise.",
-			Timeout: 500 * time.Millisecond, Delay: 0, Threads: 500, PortRange: "1-1024", Randomize: false},
-		"shadow": {
-			ID: "shadow", Name: "SHADOW",
-			Desc:    "Stealth/Evasion. Slow, randomized delays.",
-			Tactics: "Use against Firewalls/IDS or Red Team Ops. Very slow but safe.",
-			Timeout: 2000 * time.Millisecond, Delay: 1500 * time.Millisecond, Threads: 10, PortRange: "1-1000", Randomize: true},
-		"blitz": {
-			ID: "blitz", Name: "BLITZ",
-			Desc:    "Aggressive Strike. Max speed, noisy.",
-			Tactics: "Use for CTFs, internal labs, or when noise doesn't matter.",
-			Timeout: 200 * time.Millisecond, Delay: 0, Threads: 2000, PortRange: "1-1024", Randomize: false},
-		"titan": {
-			ID: "titan", Name: "TITAN",
-			Desc:    "Deep Audit. Scans ALL 65,535 ports.",
-			Tactics: "Use for full vulnerability assessment. Takes time.",
-			Timeout: 600 * time.Millisecond, Delay: 0, Threads: 800, PortRange: "1-65535", Randomize: false},
+		"scout":  {ID: "scout", Name: "SCOUT", Timeout: 500 * time.Millisecond, Threads: 500, PortRange: "1-1024", Theme: ThemeScout},
+		"shadow": {ID: "shadow", Name: "SHADOW", Timeout: 2000 * time.Millisecond, Delay: 1500 * time.Millisecond, Threads: 10, PortRange: "1-1000", Randomize: true, Theme: ThemeShadow},
+		"blitz":  {ID: "blitz", Name: "BLITZ", Timeout: 200 * time.Millisecond, Threads: 2000, PortRange: "1-1024", Theme: ThemeBlitz},
+		"titan":  {ID: "titan", Name: "TITAN", Timeout: 600 * time.Millisecond, Threads: 800, PortRange: "1-65535", Theme: ThemeTitan},
 	}
 
-	// --- CUSTOM HELP MENU DETAILLÉ ---
-	flag.Usage = func() {
-		printBanner("help")
-		fmt.Printf("%sUSAGE:%s\n  ./argos -host <TARGET> [FLAGS]\n\n", ColorBold, ColorReset)
-
-		fmt.Printf("%sTACTICAL GUIDE (WHICH MODE TO CHOOSE?):%s\n", ColorCyan, ColorReset)
-		modeOrder := []string{"scout", "shadow", "blitz", "titan"}
-		for _, key := range modeOrder {
-			p := profiles[key]
-			fmt.Printf("  %s%-8s%s : %s\n", ColorGreen, strings.ToUpper(p.ID), ColorReset, p.Desc)
-			fmt.Printf("             %s→ %s%s\n\n", ColorGrey, p.Tactics, ColorReset)
-		}
-
-		fmt.Printf("%sEXAMPLES:%s\n", ColorCyan, ColorReset)
-		fmt.Printf("  %s1. Quick Scan (Default)%s\n", ColorWhite, ColorReset)
-		fmt.Printf("     argos -host 192.168.1.15\n\n")
-		fmt.Printf("  %s2. Stealth Scan (Evasion / Red Team)%s\n", ColorWhite, ColorReset)
-		fmt.Printf("     argos -host 10.10.10.5 -mode shadow\n\n")
-		fmt.Printf("  %s3. Network Sweep (Find alive hosts fast)%s\n", ColorWhite, ColorReset)
-		fmt.Printf("     argos -host 192.168.1.0/24 -mode blitz\n\n")
-		fmt.Printf("  %s4. Full Audit (HTML/JSON Report)%s\n", ColorWhite, ColorReset)
-		fmt.Printf("     argos -host 10.10.10.5 -mode titan -html report.html -json report.json\n\n")
-
-		fmt.Printf("%sFLAGS:%s\n", ColorCyan, ColorReset)
-		fmt.Printf("  -host    : Target IP or CIDR (e.g. 192.168.1.1 or 10.0.0.0/24)\n")
-		fmt.Printf("  -mode    : Scan Profile (scout, shadow, blitz, titan)\n")
-		fmt.Printf("  -html    : Generate HTML Intelligence Report (Dark Mode / Visuals)\n")
-		fmt.Printf("  -json    : Export to JSON file\n")
-		fmt.Printf("  -p       : Custom ports (e.g. 80,443). Overrides mode defaults.\n")
-		fmt.Printf("  -random  : Shuffle ports (Anti-IDS).\n")
-	}
-
-	hostPtr := flag.String("host", "", "Target")
-	portsPtr := flag.String("p", "default", "Ports")
+	hostPtr := flag.String("host", "", "IP")
 	profilePtr := flag.String("mode", "scout", "Mode")
-	shufflePtr := flag.Bool("random", false, "Randomize")
-	jsonPtr := flag.String("json", "", "JSON Export")
-	htmlPtr := flag.String("html", "", "HTML Report")
-	dryRunPtr := flag.Bool("dry", false, "Dry Run")
+	jsonPtr := flag.String("json", "", "JSON")
+	htmlPtr := flag.String("html", "", "HTML")
 	flag.Parse()
 
 	if *hostPtr == "" {
-		flag.Usage()
+		p := tea.NewProgram(initialHelpModel(), tea.WithAltScreen())
+		if _, err := p.Run(); err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
 		return
 	}
 
-	// Config Mode
 	modeKey := strings.ToLower(*profilePtr)
 	if modeKey == "tytan" {
 		modeKey = "titan"
 	}
-
 	prof, exists := profiles[modeKey]
 	if !exists {
 		prof = profiles["scout"]
-		fmt.Printf("Mode inconnu, fallback Scout.\n")
 	}
 
-	printBanner(prof.ID)
-
-	// Ports
-	portStr := *portsPtr
-	if portStr == "default" {
-		portStr = prof.PortRange
-	}
-	ports, _ := parsePorts(portStr)
-	if prof.Randomize || *shufflePtr {
+	ports, _ := parsePorts(prof.PortRange)
+	ips, _ := parseTargets(*hostPtr)
+	if prof.Randomize {
 		rand.Seed(time.Now().UnixNano())
 		rand.Shuffle(len(ports), func(i, j int) { ports[i], ports[j] = ports[j], ports[i] })
 	}
-
-	ips, _ := parseTargets(*hostPtr)
 	totalJobs := len(ips) * len(ports)
 
-	fmt.Printf("%s[+] Mode    : %s%s\n", ColorCyan, prof.Name, ColorReset)
-	fmt.Printf("%s[+] Threads : %d%s\n", ColorCyan, prof.Threads, ColorReset)
-	fmt.Printf("%s[+] Targets : %d IP(s) x %d Ports%s\n", ColorGreen, len(ips), len(ports), ColorReset)
-	if *htmlPtr != "" {
-		fmt.Printf("%s[+] Report  : HTML Activated%s\n", ColorOrange, ColorReset)
-	}
-	fmt.Println(strings.Repeat("-", 60))
-
-	if *dryRunPtr {
-		return
-	}
-
-	// Execution
 	jobs := make(chan ScanTarget, prof.Threads)
 	results := make(chan *ScanResult, prof.Threads)
 	var wg sync.WaitGroup
 	ctx, cancel := context.WithCancel(context.Background())
-	go func() { c := make(chan os.Signal, 1); signal.Notify(c, os.Interrupt); <-c; cancel() }()
 	defer cancel()
 
 	for i := 0; i < prof.Threads; i++ {
@@ -500,70 +754,30 @@ func main() {
 			}
 		}
 		close(jobs)
+		wg.Wait()
+		close(results)
 	}()
-	go func() { wg.Wait(); close(results) }()
 
-	// Collection
-	var finalResults []ScanResult
-	totalRisk := 0
-	count := 0
-	start := time.Now()
-
-	for r := range results {
-		count++
-		if count%20 == 0 || count == totalJobs {
-			updateProgressBar(count, totalJobs)
-		}
-		if r != nil {
-			finalResults = append(finalResults, *r)
-			totalRisk += r.RiskScore
-		}
+	p := tea.NewProgram(initialScanModel(results, totalJobs, prof, *hostPtr), tea.WithAltScreen())
+	finalModel, err := p.Run()
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
 	}
 
-	// Output
-	fmt.Println()
-	sort.Slice(finalResults, func(i, j int) bool { return finalResults[i].Port < finalResults[j].Port })
-
-	fmt.Printf("%-16s %-8s %-12s %-30s\n", "IP", "PORT", "SERVICE", "INTELLIGENCE")
-	fmt.Println(strings.Repeat("-", 75))
-
-	for _, r := range finalResults {
-		info := r.Banner
-		color := ColorCyan
-
-		if r.WebTitle != "" {
-			info = fmt.Sprintf("Title: %s | Srv: %s", r.WebTitle, r.WebServer)
-			color = ColorOrange
-		} else if info == "" {
-			info = "-"
+	if m, ok := finalModel.(scanModel); ok {
+		if *jsonPtr != "" {
+			d, _ := json.MarshalIndent(m.results, "", "  ")
+			_ = os.WriteFile(*jsonPtr, d, 0644)
 		}
-		if len(info) > 40 {
-			info = info[:37] + "..."
+		if *htmlPtr != "" {
+			generateHTMLReport(*htmlPtr, m.results)
 		}
-
-		portColor := ColorBold
-		if r.RiskScore >= 20 {
-			portColor = ColorRed
-		}
-
-		fmt.Printf("%s%-16s %-8d %-12s %s%s%s\n", portColor, r.IP, r.Port, r.Service, color, info, ColorReset)
+		fmt.Printf("\n%s[+] SESSION CLOSED.%s %d ports identified on %s.\n", ColorGreen, ColorReset, len(m.results), *hostPtr)
 	}
-
-	printRiskBar(totalRisk)
-
-	if *jsonPtr != "" {
-		d, _ := json.MarshalIndent(finalResults, "", "  ")
-		_ = os.WriteFile(*jsonPtr, d, 0644)
-	}
-	if *htmlPtr != "" {
-		generateHTMLReport(*htmlPtr, finalResults)
-	}
-
-	fmt.Printf("\n[FIN] Scan terminé en %s.\n", time.Since(start))
 }
 
-// --- 8. HELPERS ---
-
+// --- UTILS ---
 func parseTargets(input string) ([]string, error) {
 	if !strings.Contains(input, "/") {
 		return []string{input}, nil
@@ -583,7 +797,6 @@ func parseTargets(input string) ([]string, error) {
 	}
 	return ips, nil
 }
-
 func parsePorts(s string) ([]int, error) {
 	var p []int
 	if s == "all" {
@@ -607,4 +820,14 @@ func parsePorts(s string) ([]int, error) {
 		}
 	}
 	return p, nil
+}
+func generateHTMLReport(filename string, results []ScanResult) {
+	f, _ := os.Create(filename)
+	defer f.Close()
+	f.WriteString("<html><body style='background:#111;color:#0f0'><h1>ARGOS REPORT</h1><ul>")
+	for _, r := range results {
+		f.WriteString(fmt.Sprintf("<li>%s:%d (%s)</li>", r.IP, r.Port, r.Service))
+	}
+	f.WriteString("</ul></body></html>")
+	fmt.Printf("%s[✓] Rapport HTML : %s%s\n", ColorGreen, filename, ColorReset)
 }
