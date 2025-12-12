@@ -15,9 +15,9 @@
 
 Built in pure Golang, it leverages a massive concurrent architecture to scan networks at blazing speeds while providing a cinematic, **"God Eye" TUI** (Terminal User Interface). Unlike traditional tools that output static text, Argos deploys a live, interactive war room dashboard.
 
-### ✨ OMEGA Features (v10.0)
+### ✨ OMEGA Features (v5.0.0)
 
-* **📺 God Eye Dashboard:** A responsive, split-view TUI featuring real-time telemetry, **network activity sparklines**, and system diagnostics (RAM/CPU/Goroutines).
+* **📺 OMEGA Dashboard:** A responsive, split-view TUI featuring real-time telemetry, **network activity sparklines**, and system diagnostics (RAM/CPU/Goroutines).
 * **🧠 The Oracle Engine:** Automatic **Risk Assessment Scoring** (Critical/High/Low) and **Web Intelligence** extraction (HTTP Titles & Server Headers).
 * **🎨 Dynamic Tactical Themes:**
     * 🔥 **BLITZ:** High-contrast Neon Red/Gold.
