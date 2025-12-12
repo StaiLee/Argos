@@ -1,9 +1,9 @@
 # 👁️ ARGOS PANOPTES
 
-> **A blazing fast, concurrent network scanner written in pure Go.**
-> *Built for speed, precision, stealth, and style.*
+> **The Ultimate Tactical Network Scanner.**
+> *Speed. Precision. Cyber-Warfare UX.*
 
-![Go Version](https://img.shields.io/badge/Go-1.24+-00ADD8?style=flat&logo=go)
+![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)
 
@@ -11,48 +11,52 @@
 
 ## 📖 Overview
 
-**Argos** is a next-generation TCP port scanner designed for Red Team operations and Network Administration. Unlike traditional threaded scanners, Argos leverages **Golang's Goroutines** and **Channels** to handle thousands of concurrent connections with minimal resource overhead.
+**Argos Panoptes** is not just a port scanner; it is a **Cyber-Reconnaissance Command Center**. 
 
-Now featuring **"The Oracle" Engine**, Argos goes beyond simple port scanning by providing Threat Assessment, Web Intelligence, and tactical presets.
+Built in pure Golang, it leverages a massive concurrent architecture to scan networks at blazing speeds while providing a cinematic, **"God Eye" TUI** (Terminal User Interface). Unlike traditional tools that output static text, Argos deploys a live, interactive war room dashboard.
 
-### ✨ Key Features
+### ✨ OMEGA Features (v10.0)
 
-* **🧠 The Oracle Intelligence (NEW):** Automatically calculates a **Threat Score** based on open ports and identifies critical vulnerabilities.
-* **🌐 Web Recon Module (NEW):** Silent extraction of HTTP Titles and Server Headers for ports 80, 443, 8080, etc.
-* **📊 HTML Tactical Report (NEW):** Generates a stunning Dark Mode HTML report for professional presentation.
-* **🎮 Tactical Modes:** Pre-configured scanning profiles (`SCOUT`, `SHADOW`, `BLITZ`, `TITAN`) adapted to any situation.
-* **🚀 High Performance:** Scans massive networks in seconds using a Worker Pool architecture.
-* **👻 Stealth & Evasion:** "Shadow" mode implements randomized jitter and port shuffling to evade IDS/IPS.
-* **🎨 Cyberpunk UX:** Features a TrueColor gradient CLI, animated progress bars, and threat level indicators.
+* **📺 God Eye Dashboard:** A responsive, split-view TUI featuring real-time telemetry, **network activity sparklines**, and system diagnostics (RAM/CPU/Goroutines).
+* **🧠 The Oracle Engine:** Automatic **Risk Assessment Scoring** (Critical/High/Low) and **Web Intelligence** extraction (HTTP Titles & Server Headers).
+* **🎨 Dynamic Tactical Themes:**
+    * 🔥 **BLITZ:** High-contrast Neon Red/Gold.
+    * ❄️ **TITAN:** Deep Corporate Cyan/Blue.
+    * 👻 **SHADOW:** Monochrome Stealth.
+    * 🍀 **SCOUT:** Retro Matrix Green.
+* **🚀 Plasma Progress Bar:** A custom-rendered, fluid progress bar that reflects the exact operational theme colors.
+* **🛡️ Interactive Manual:** Built-in digital documentation reader accessible directly from the CLI.
 
 ---
 
 ## ⚡ Installation
 
 ### Prerequisites
-* **Go 1.21** or higher installed on your machine.
-* **Make** (optional, recommended).
+* **Go 1.21** or higher installed.
+* A terminal with **TrueColor** support (e.g., Terminator, iTerm2, Alacritty, VSCode).
 
 ### Build from Source
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/StaiLee/Argos.git](https://github.com/StaiLee/Argos.git)
+git clone [https://github.com/StaiLee/Argos]
 cd Argos
 
-# 2. Build and Install (Linux/Mac)
-go build -o argos main.go
-sudo mv argos /usr/local/bin/
+# 2. Install dependencies (BubbleTea framework)
+go mod tidy
 
-# 3. Verify installation
-argos
+# 3. Build the binary
+go build -o argos main.go
+
+# 4. Install to system path
+sudo mv argos /usr/local/bin/
 ```
 
 ---
 
 ## 🚀 Usage
 
-Argos uses a "Tactical Mode" system to simplify usage.
+Argos uses a "Tactical Mode" system to simplify complex scanning operations.
 
 ```bash
 argos -host <TARGET> [FLAGS]
@@ -69,58 +73,42 @@ Argos comes with 4 battle-tested presets. Select one using the `-mode` flag.
 | **BLITZ** | `-mode blitz` | **Aggressive Strike.** Max speed, no delay. Very noisy. | CTFs, Internal Labs, Fast Sweep. |
 | **TITAN** | `-mode titan` | **Deep Audit.** Scans ALL 65,535 ports. Heavy load. | Full Vulnerability Assessment. |
 
-### 🚩 Available Flags
+### 🚩 Advanced Examples
 
-| Flag | Description | Example |
-| :--- | :--- | :--- |
-| `-host` | **(Required)** Target IP or CIDR range. | `192.168.1.1` or `10.0.0.0/24` |
-| `-mode` | Select a tactical profile (see above). | `-mode titan` |
-| `-html` | **(NEW)** Generate a visual HTML Intelligence Report. | `-html report.html` |
-| `-json` | Export results to JSON format. | `-json output.json` |
-| `-p` | Override ports (Comma separated or Range). | `-p 80,443` or `-p 1-5000` |
-| `-random`| Force port shuffling (Anti-IDS). | `-random` |
-
----
-
-## 💡 Examples
-
-**1. Quick Recon (Default)**
-Scans top 1024 ports with balanced settings.
+**1. The "God Eye" Experience (Titan Mode)**
+Launch a full audit with the Blue/Cyan theme and detailed logs.
 ```bash
-argos -host 192.168.1.15
+argos -host 10.10.50.2 -mode titan
 ```
 
-**2. The "Ghost Protocol" (Stealth)**
-Scans slowly with randomized delays to bypass firewalls.
+**2. Subnet Sweep (Blitz Mode)**
+Scan an entire range for Web Servers (80, 443, 8080) in seconds.
 ```bash
-argos -host 10.10.10.5 -mode shadow
+argos -host 192.168.1.0/24 -p 80,443,8080 -mode blitz
 ```
 
-**3. Full Audit with Reporting (Professional)**
-Scans all 65k ports and generates a client-ready HTML report.
+**3. Stealth Operation (Shadow Mode)**
+Bypass firewalls using randomized port shuffling and jitter delays.
 ```bash
-argos -host 10.10.10.5 -mode titan -html audit_report.html
+argos -host target.corp -mode shadow -p 1-5000 -random
 ```
 
-**4. Web Server Hunt (CIDR)**
-Find all web servers on a subnet very quickly.
+**4. Reporting**
+Export results to JSON for processing or HTML for client presentation.
 ```bash
-argos -host 192.168.1.0/24 -p 80,443 -mode blitz
+argos -host 127.0.0.1 -json results.json -html report.html
 ```
 
 ---
 
 ## 🏗️ Technical Architecture
 
-Argos was built to demonstrate the power of **Concurrency vs. Parallelism** in Network Engineering.
+Argos demonstrates the power of **Go Concurrency Patterns** mixed with the **ELM Architecture**:
 
-### The Worker Pool Pattern
-Instead of spawning a new thread for every port (which crashes the OS), Argos uses a fixed pool of workers:
-
-1.  **The Feeder:** A main Goroutine generates jobs (Target IP + Port) and pushes them into a buffered `channel`.
-2.  **The Workers:** A user-defined number of workers pull jobs from the channel.
+1.  **The Feeder:** Pushes targets into a buffered channel.
+2.  **The Worker Pool:** Spawns 500-2000 micro-threads (Goroutines) to handle network I/O efficiently.
 3.  **The Oracle:** Analyzes responses (Banner Grabbing, HTTP Headers) to compute a Risk Score.
-4.  **The Reporter:** Aggregates data into JSON/HTML formats.
+4.  **The UI Engine (Bubble Tea):** Renders the TUI at 60fps, handling keyboard events and window resizing without blocking the scan logic.
 
 ```mermaid
 graph TD;
@@ -131,14 +119,14 @@ graph TD;
     Worker1 -->|Probe| Network((Target));
     Network -->|Banner/Headers| Results(Channel: Results);
     Results --> Oracle[The Oracle Engine];
-    Oracle -->|Threat Score| UI[CLI & HTML Report];
+    Oracle -->|Telemetry & Logs| Dashboard[God Eye TUI];
 ```
 
 ---
 
 ## ⚠️ Disclaimer
 
-**Argos is intended for educational and authorized testing purposes only.**
+**Argos is intended for educational and authorized security testing purposes only.**
 Scanning networks without permission is illegal in many jurisdictions. The developers assume no liability for misuse of this tool.
 
 ---
