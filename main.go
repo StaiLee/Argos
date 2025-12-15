@@ -25,15 +25,18 @@ import (
 	"github.com/charmbracelet/lipgloss"
 )
 
-// --- 1. CONFIGURATION ---
+// ---------------------------------------------------------
+// CONFIGURATION & CONSTANTS
+// ---------------------------------------------------------
 
 const (
-	AppVersion = "5.0.0(OMEGA)"
-	AppName    = "ARGOS PANOPTES"
-	ColorReset = "\033[0m"
-	ColorGreen = "\033[32m"
+	// AppVersion denotes the current release build.
+	AppVersion = "5.0.0"
+	// AppName is the binary name.
+	AppName = "ARGOS"
 )
 
+// CommonPorts maps standard TCP ports to their service names.
 var CommonPorts = map[int]string{
 	21: "FTP", 22: "SSH", 23: "Telnet", 25: "SMTP", 53: "DNS", 80: "HTTP",
 	110: "POP3", 143: "IMAP", 443: "HTTPS", 445: "SMB", 3306: "MySQL",
@@ -41,12 +44,16 @@ var CommonPorts = map[int]string{
 	8443: "HTTPS-Alt", 9000: "Portainer", 27017: "MongoDB",
 }
 
+// RiskWeights assigns a threat level to specific ports (higher is riskier).
 var RiskWeights = map[int]int{
 	21: 20, 23: 30, 445: 25, 3389: 15, 80: 5, 443: 0, 22: 5,
 }
 
-// --- 2. THEMES ---
+// ---------------------------------------------------------
+// THEME ENGINE
+// ---------------------------------------------------------
 
+// Theme defines the color palette for the TUI.
 type Theme struct {
 	Primary   lipgloss.Color
 	Secondary lipgloss.Color
@@ -55,6 +62,7 @@ type Theme struct {
 	Gradient  []string
 }
 
+// Pre-defined tactical themes.
 var (
 	ThemeBlitz = Theme{
 		Primary:   lipgloss.Color("#FF2200"), // Neon Red
@@ -86,6 +94,7 @@ var (
 	}
 )
 
+// renderGradient applies a color gradient to a string.
 func renderGradient(text string, colors []string) string {
 	if len(text) == 0 {
 		return ""
@@ -98,36 +107,56 @@ func renderGradient(text string, colors []string) string {
 	return s.String()
 }
 
-// --- 3. STRUCTURES ---
+// ---------------------------------------------------------
+// DATA STRUCTURES
+// ---------------------------------------------------------
 
+// ScanTarget represents a single unit of work (IP + Port).
 type ScanTarget struct {
 	IP   string
 	Port int
 }
+
+// ScanResult holds the findings for a specific port.
 type ScanResult struct {
-	IP, Service, Banner, WebTitle, WebServer string
-	Port, RiskScore                          int
-	Timestamp                                time.Time
-}
-type ScanProfile struct {
-	ID, Name, Desc string
-	Timeout, Delay time.Duration
-	Threads        int
-	PortRange      string
-	Randomize      bool
-	Theme          Theme
+	IP        string
+	Service   string
+	Banner    string // Raw banner from service
+	WebTitle  string // HTML <title> tag
+	WebServer string // HTTP Server header
+	Port      int
+	RiskScore int
+	Timestamp time.Time
 }
 
-// --- 4. HELP MODEL (LE MANUEL ULTIME) ---
+// ScanProfile defines the operational parameters (speed, stealth, theme).
+type ScanProfile struct {
+	ID        string
+	Name      string
+	Desc      string
+	Timeout   time.Duration
+	Delay     time.Duration
+	Threads   int
+	PortRange string
+	Randomize bool
+	DeepScan  bool // Enables banner grabbing
+	Theme     Theme
+}
+
+// ---------------------------------------------------------
+// UI MODEL: HELP / MANUAL
+// ---------------------------------------------------------
 
 type helpModel struct {
-	pages                  []string
-	pageIdx, width, height int
-	quitting               bool
+	pages         []string
+	pageIdx       int
+	width, height int
+	quitting      bool
 }
 
 func initialHelpModel() helpModel { return helpModel{pages: buildPages(), pageIdx: 0} }
 func (m helpModel) Init() tea.Cmd { return nil }
+
 func (m helpModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
@@ -150,12 +179,14 @@ func (m helpModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	}
 	return m, nil
 }
+
 func (m helpModel) View() string {
 	if m.quitting {
 		return ""
 	}
 	content := m.pages[m.pageIdx]
 
+	// Navigation Footer
 	navStyle := lipgloss.NewStyle().Foreground(lipgloss.Color("#555"))
 	activeDot := lipgloss.NewStyle().Foreground(ThemeTitan.Primary).Render("●")
 	inactiveDot := lipgloss.NewStyle().Foreground(lipgloss.Color("#333")).Render("○")
@@ -171,12 +202,20 @@ func (m helpModel) View() string {
 
 	nav := fmt.Sprintf("\n%s\n%s", dots, navStyle.Render("[ARROWS] FLIP PAGE  •  [Q] EXIT SYSTEM"))
 
-	frame := lipgloss.NewStyle().Border(lipgloss.DoubleBorder()).BorderForeground(ThemeTitan.Primary).Padding(1, 3).Width(90).Align(lipgloss.Center)
-	return lipgloss.Place(m.width, m.height, lipgloss.Center, lipgloss.Center, lipgloss.JoinVertical(lipgloss.Center, frame.Render(content), nav))
+	frame := lipgloss.NewStyle().
+		Border(lipgloss.DoubleBorder()).
+		BorderForeground(ThemeTitan.Primary).
+		Padding(1, 3).
+		Width(90).
+		Align(lipgloss.Center)
+
+	return lipgloss.Place(m.width, m.height, lipgloss.Center, lipgloss.Center,
+		lipgloss.JoinVertical(lipgloss.Center, frame.Render(content), nav),
+	)
 }
 
 func buildPages() []string {
-	// Styles
+	// Text Styles
 	t := lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("#FFF")).Background(lipgloss.Color("#F06")).Padding(0, 1).Render
 	h := lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("#0FF")).MarginTop(1).Render
 	c := lipgloss.NewStyle().Foreground(lipgloss.Color("#0F0")).Background(lipgloss.Color("#222")).Padding(0, 1).Render
@@ -186,14 +225,15 @@ func buildPages() []string {
 	p1 := fmt.Sprintf(`
 %s
 
-ARGOS PANOPTES by StaiLee
-   
+ARGOS v%s
+by StaiLee
 
 %s
 %s
 
 "The giant with a hundred eyes."
-`, renderGradient("/// SIERRA TANGO ALPHA INDIA OMEGA ///", ThemeBlitz.Gradient),
+`, renderGradient("/// CLASSIFIED MILITARY GRADE SOFTWARE ///", ThemeBlitz.Gradient),
+		AppVersion,
 		dim("Authorized Personnel Only"),
 		dim("System Ready."))
 
@@ -206,14 +246,14 @@ Unlike traditional threaded scanners, it spawns thousands of micro-threads.
 
 %s
 1. %s : Generates targets (IP:Port) into a buffered channel.
-2. %s : Consume targets and execute TCP Handshake.
-3. %s : Analyzes Banner, HTTP Headers, and calculates Risk Score.
-4. %s : Renders the TUI Dashboard in real-time.
+2. %s : Connects and performs TCP Handshake.
+3. %s : (New) If Deep Scan is on, waits for banners or sends probes.
+4. %s : Analyzes Banner, HTTP Headers, and calculates Risk Score.
 
 %s
-Argos performs a full TCP Connect Scan (Syscall connect()).
+Argos performs a full TCP Connect Scan.
 SYN-ACK = Open. RST = Closed. Timeout = Filtered.
-`, t("SYSTEM ARCHITECTURE"), h("WORKFLOW"), c("Feeder"), c("Worker Pool"), c("The Oracle"), c("UI Engine"), h("NETWORK PROTOCOL"))
+`, t("SYSTEM ARCHITECTURE"), h("WORKFLOW"), c("Feeder"), c("Worker Pool"), c("Identity Module"), c("The Oracle"), h("NETWORK PROTOCOL"))
 
 	// PAGE 3: MODES
 	p3 := fmt.Sprintf(`
@@ -222,33 +262,65 @@ SYN-ACK = Open. RST = Closed. Timeout = Filtered.
 %s
 %s
 Target: Initial Recon / Daily Checks.
-Specs:  Balanced speed (500 threads). Default config.
+Specs:  Balanced speed. Top 1024 ports.
 
 %s
 %s
 Target: Red Teaming / Evasion.
-Specs:  Slow, Randomized Jitter (0-1.5s), Anti-IDS Shuffling.
-Color:  Ghost White.
+Specs:  Slow, Randomized Jitter, Anti-IDS.
 
 %s
 %s
-Target: CTF / Internal Networks / Destruction.
-Specs:  MAX SPEED (2000 threads), No Delay. Fire at will.
-Color:  Neon Red.
+Target: CTF / Internal Networks.
+Specs:  MAX SPEED (2000 threads). Fire at will.
 
 %s
 %s
 Target: Full Audits.
 Specs:  Deep Scan (65,535 ports). Heavy load.
-Color:  Cyan.
 `, t("TACTICAL PROFILES"),
 		h("1. SCOUT"), c("-mode scout"),
-		h("2. SHADOW (Stealth)"), c("-mode shadow"),
-		h("3. BLITZ (Aggressive)"), c("-mode blitz"),
-		h("4. TITAN (Audit)"), c("-mode titan"))
+		h("2. SHADOW"), c("-mode shadow"),
+		h("3. BLITZ"), c("-mode blitz"),
+		h("4. TITAN"), c("-mode titan"))
 
-	// PAGE 4: ADVANCED USAGE
+	// PAGE 4: FLAGS
 	p4 := fmt.Sprintf(`
+%s
+
+%s
+The target address. Supports IP (1.1.1.1) or CIDR (10.0.0.0/24).
+
+%s
+Select operational profile: scout, shadow, blitz, titan.
+
+%s
+Enable Active Service Fingerprinting (Banner Grabbing).
+Significantly slower but provides version details (SSH, HTTP, FTP).
+
+%s
+Define custom ports. Examples: %s, %s, %s.
+
+%s
+Randomize scan order to reduce detection risk (Anti-IDS).
+
+%s
+Export intelligence to external files.
+`,
+		t("MISSION PARAMETERS (FLAGS)"),
+		c("-host <TARGET>"),
+		c("-mode <PROFILE>"),
+		c("-deep"),
+		c("-p <RANGE>"), c("80,443"), c("1-1024"), c("all"),
+		c("-random"),
+		c("-html <FILE> / -json <FILE>"))
+
+	// PAGE 5: ADVANCED USAGE
+	p5 := fmt.Sprintf(`
+%s
+
+%s
+Attempt to identify Service Versions (SSH, FTP, HTTP versions):
 %s
 
 %s
@@ -262,18 +334,14 @@ Scan a specific server slowly to avoid detection:
 %s
 Generate a client-ready HTML report with full details:
 %s
-
-%s
-Randomize port order to bypass simple firewall rules:
-%s
 `, t("ADVANCED OPERATIONS"),
-		h("SUBNET SWEEP"), c("argos -host 192.168.1.0/24 -p 80,443,8080 -mode blitz"),
+		h("DEEP IDENTITY SCAN"), c("argos -host 10.10.10.5 -deep"),
+		h("SUBNET SWEEP"), c("argos -host 192.168.1.0/24 -p 80,443 -mode blitz"),
 		h("STEALTH MISSION"), c("argos -host 10.10.10.5 -mode shadow -p 1-5000"),
-		h("FULL AUDIT"), c("argos -host 10.10.50.2 -mode titan -html report.html"),
-		h("EVASION"), c("argos -host <IP> -random -mode shadow"))
+		h("REPORTING"), c("argos -host target.ip -mode titan -html report.html"))
 
-	// PAGE 5: DISCLAIMER
-	p5 := fmt.Sprintf(`
+	// PAGE 6: DISCLAIMER
+	p6 := fmt.Sprintf(`
 %s
 
 Argos is intended for %s and %s purposes only.
@@ -284,28 +352,35 @@ The developers assume no liability for misuse of this tool.
 %s
 `, t("LEGAL DISCLAIMER"), c("educational"), c("authorized testing"), dim("© 2025 Argos Project"))
 
-	return []string{p1, p2, p3, p4, p5}
+	return []string{p1, p2, p3, p4, p5, p6}
 }
 
-// --- 5. SCAN MODEL ---
+// ---------------------------------------------------------
+// UI MODEL: MAIN DASHBOARD
+// ---------------------------------------------------------
 
 type tickMsg time.Time
 
 type scanModel struct {
-	results                             []ScanResult
-	resultsChan                         chan *ScanResult
-	viewport                            viewport.Model
-	spinner                             spinner.Model
-	totalJobs, completed, width, height int
-	finished, quitting                  bool
-	startTime                           time.Time
-	profile                             ScanProfile
-	targetStr                           string
-	theme                               Theme
-	countCritical, countHigh, countLow  int
-	logBuffer                           string
+	results       []ScanResult
+	resultsChan   chan *ScanResult
+	viewport      viewport.Model
+	spinner       spinner.Model
+	totalJobs     int
+	completed     int
+	width, height int
+	finished      bool
+	quitting      bool
+	startTime     time.Time
+	profile       ScanProfile
+	targetStr     string
+	theme         Theme
+	countCritical int
+	countHigh     int
+	countLow      int
+	logBuffer     string
 
-	// Real Telemetry
+	// Telemetry Data
 	sparkline  []int
 	goroutines int
 	ramUsage   string
@@ -315,23 +390,33 @@ type scanModel struct {
 type scanResultMsg *ScanResult
 type scanFinishedMsg struct{}
 
+// initialScanModel sets up the initial state of the TUI.
 func initialScanModel(rChan chan *ScanResult, total int, prof ScanProfile, target string) scanModel {
-	// CUSTOM SPINNER & VIEWPORT
 	s := spinner.New()
 	s.Spinner = spinner.Pulse
 	s.Style = lipgloss.NewStyle().Foreground(prof.Theme.Primary)
 	vp := viewport.New(0, 0)
 
 	locIP := "127.0.0.1"
+	// Attempt to determine outbound IP
 	if conn, err := net.Dial("udp", "8.8.8.8:80"); err == nil {
 		locIP = conn.LocalAddr().(*net.UDPAddr).IP.String()
 		conn.Close()
 	}
 
 	return scanModel{
-		results: make([]ScanResult, 0), resultsChan: rChan, spinner: s, viewport: vp,
-		totalJobs: total, completed: 0, startTime: time.Now(), profile: prof, targetStr: target, theme: prof.Theme,
-		sparkline: make([]int, 30), localIP: locIP,
+		results:     make([]ScanResult, 0),
+		resultsChan: rChan,
+		spinner:     s,
+		viewport:    vp,
+		totalJobs:   total,
+		completed:   0,
+		startTime:   time.Now(),
+		profile:     prof,
+		targetStr:   target,
+		theme:       prof.Theme,
+		sparkline:   make([]int, 30),
+		localIP:     locIP,
 	}
 }
 
@@ -349,7 +434,9 @@ func tickCmd() tea.Cmd {
 	return tea.Tick(100*time.Millisecond, func(t time.Time) tea.Msg { return tickMsg(t) })
 }
 
-// --- 6. LOGIC ---
+// ---------------------------------------------------------
+// APPLICATION LOGIC (UPDATE LOOP)
+// ---------------------------------------------------------
 
 func (m scanModel) Init() tea.Cmd {
 	return tea.Batch(m.spinner.Tick, waitForResult(m.resultsChan), tickCmd())
@@ -386,7 +473,7 @@ func (m scanModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, cmd
 
 	case tickMsg:
-		// TELEMETRIE
+		// Update Telemetry
 		activity := 0
 		if m.completed > 0 && !m.finished {
 			activity = rand.Intn(3)
@@ -408,6 +495,7 @@ func (m scanModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		var cmds []tea.Cmd
 		if msg != nil {
 			m.results = append(m.results, *msg)
+			// Risk Scoring logic
 			if (*msg).RiskScore >= 20 {
 				m.countCritical++
 			} else if (*msg).RiskScore >= 10 {
@@ -416,9 +504,10 @@ func (m scanModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				m.countLow++
 			}
 
-			// Boost sparkline
+			// Visual feedback on sparkline
 			m.sparkline[len(m.sparkline)-1] = 8
 
+			// Log formatting
 			line := formatLogLine(*msg, m.theme)
 			m.logBuffer += line + "\n"
 			m.viewport.SetContent(m.logBuffer)
@@ -434,9 +523,11 @@ func (m scanModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, nil
 }
 
-// --- 7. VIEW (UI GOD MODE) ---
+// ---------------------------------------------------------
+// RENDER LOGIC (VIEW)
+// ---------------------------------------------------------
 
-// Custom Bar Renderer (Correction Couleur & Fluidité)
+// renderCustomBar draws a progress bar manually to ensure color accuracy.
 func renderCustomBar(width int, pct float64, c lipgloss.Color) string {
 	if pct > 1.0 {
 		pct = 1.0
@@ -465,32 +556,34 @@ func (m scanModel) View() string {
 	cSec := m.theme.Secondary
 	cDark := m.theme.Dark
 
+	// Dynamic Border Color
 	border := lipgloss.NewStyle().Border(lipgloss.RoundedBorder()).BorderForeground(cSec)
 	if m.finished {
 		border = border.BorderForeground(cPrim)
 	}
 
-	// HEADER
-	headTxt := fmt.Sprintf(" ARGOS %s │ OPERATION: %s ", AppVersion, m.profile.Name)
+	// 1. Header
+	headTxt := fmt.Sprintf(" %s %s │ OPERATION: %s ", AppName, AppVersion, m.profile.Name)
 	title := renderGradient(headTxt, m.theme.Gradient)
 	header := border.Copy().Width(m.width - 2).Align(lipgloss.Center).Render(title)
 
-	// LAYOUT
+	// Layout Calculation
 	leftW := int(float64(m.width) * 0.30)
 	rightW := m.width - leftW - 6
 
-	// LEFT PANEL (TELEMETRY)
+	// Styles
 	lbl := lipgloss.NewStyle().Foreground(cPrim).Bold(true).Render
 	val := lipgloss.NewStyle().Foreground(m.theme.Text).Render
 	dim := lipgloss.NewStyle().Foreground(lipgloss.Color("#444")).Render
 
+	// Metrics Calculation
 	elapsed := time.Since(m.startTime).Round(time.Second)
 	rate := 0.0
 	if time.Since(m.startTime).Seconds() > 0 {
 		rate = float64(m.completed) / time.Since(m.startTime).Seconds()
 	}
 
-	eta := "CALCULATING..."
+	eta := "CALC..."
 	if rate > 0 {
 		rem := time.Duration(int(float64(m.totalJobs-m.completed)/rate)) * time.Second
 		eta = rem.String()
@@ -499,7 +592,7 @@ func (m scanModel) View() string {
 		eta = "0s"
 	}
 
-	// Sparkline Render
+	// Sparkline Construction
 	spark := ""
 	bars := []string{" ", "▂", "▃", "▄", "▅", "▆", "▇", "█"}
 	for _, v := range m.sparkline {
@@ -510,15 +603,21 @@ func (m scanModel) View() string {
 	}
 	sparkRender := lipgloss.NewStyle().Foreground(cSec).Render(spark)
 
-	// Panel Assembly
+	// 2. Left Panel (Telemetry)
 	blockTarget := lipgloss.JoinVertical(lipgloss.Left,
-		lbl("TARGET IDENTITY"), val(m.targetStr), dim("Scanning Protocols Active"))
+		lbl("TARGET IDENTITY"),
+		val(m.targetStr),
+		dim("Deep Scan: "+strconv.FormatBool(m.profile.DeepScan)))
 
 	blockTime := lipgloss.JoinVertical(lipgloss.Left,
-		lbl("MISSION CLOCK"), val(elapsed.String()), dim("ETA: "+eta))
+		lbl("MISSION CLOCK"),
+		val(elapsed.String()),
+		dim("ETA: "+eta))
 
 	blockProgress := lipgloss.JoinVertical(lipgloss.Left,
-		lbl("PROGRESSION"), val(fmt.Sprintf("%d/%d", m.completed, m.totalJobs)), dim(fmt.Sprintf("%.0f packets/sec", rate)))
+		lbl("PROGRESSION"),
+		val(fmt.Sprintf("%d/%d", m.completed, m.totalJobs)),
+		dim(fmt.Sprintf("%.0f p/s", rate)))
 
 	blockSys := lipgloss.JoinVertical(lipgloss.Left,
 		lbl("SYSTEM DIAGNOSTICS"),
@@ -526,7 +625,7 @@ func (m scanModel) View() string {
 		val(fmt.Sprintf("GRT: %d", m.goroutines)),
 		val(fmt.Sprintf("IP : %s", m.localIP)))
 
-	// Barres de risque
+	// Risk Gauges
 	totRisk := float64(m.countCritical + m.countHigh + m.countLow)
 	if totRisk == 0 {
 		totRisk = 1
@@ -536,7 +635,7 @@ func (m scanModel) View() string {
 	lenLow := int((float64(m.countLow) / totRisk) * 10)
 
 	blockRisk := lipgloss.JoinVertical(lipgloss.Left,
-		lbl("THREAT INTELLIGENCE"),
+		lbl("THREAT INTEL"),
 		fmt.Sprintf("%s %s %d", lipgloss.NewStyle().Foreground(lipgloss.Color("#F00")).Render("CRT"), strings.Repeat("█", lenCrit), m.countCritical),
 		fmt.Sprintf("%s %s %d", lipgloss.NewStyle().Foreground(lipgloss.Color("#FA0")).Render("HGH"), strings.Repeat("█", lenHigh), m.countHigh),
 		fmt.Sprintf("%s %s %d", lipgloss.NewStyle().Foreground(lipgloss.Color("#0F0")).Render("LOW"), strings.Repeat("█", lenLow), m.countLow),
@@ -548,18 +647,17 @@ func (m scanModel) View() string {
 
 	leftP := border.Copy().Width(leftW).Height(m.viewport.Height).Background(cDark).Padding(1, 2).Render(leftContent)
 
-	// RIGHT PANEL (LOGS)
+	// 3. Right Panel (Logs)
 	rightP := border.Copy().Width(rightW).Height(m.viewport.Height).Render(m.viewport.View())
 
-	// FOOTER
+	// 4. Footer & Progress Bar
 	spin := m.spinner.View()
-	msg := "SCANNING SECTORS..."
+	msg := "SCANNING..."
 	if m.finished {
 		spin = "✅"
 		msg = "MISSION ACCOMPLIE."
 	}
 
-	// BARRE DE PROGRESSION CUSTOM
 	barWidth := m.width - 40
 	pct := float64(m.completed) / float64(m.totalJobs)
 	barRender := renderCustomBar(barWidth, pct, cPrim)
@@ -585,32 +683,43 @@ func formatLogLine(r ScanResult, t Theme) string {
 	icon := "[TCP]"
 	style := lipgloss.NewStyle().Foreground(t.Secondary)
 
+	// Append banner info if available
+	infoText := r.Service
+	if r.Banner != "" {
+		// Clean banner (remove newlines, trim)
+		cleanBanner := strings.ReplaceAll(r.Banner, "\n", " ")
+		cleanBanner = strings.ReplaceAll(cleanBanner, "\r", "")
+		if len(cleanBanner) > 30 {
+			cleanBanner = cleanBanner[:30] + "..."
+		}
+		infoText += " | " + cleanBanner
+	}
+
+	// Threat styling
 	if r.RiskScore >= 20 {
 		icon = "[CRT]"
 		style = style.Copy().Foreground(lipgloss.Color("#FF0000")).Bold(true)
 	} else if r.WebTitle != "" {
 		icon = "[WEB]"
 		style = style.Copy().Foreground(t.Primary)
+		infoText += " | " + r.WebTitle
 	}
 
 	info := fmt.Sprintf("%-16s:%-5d", r.IP, r.Port)
-	srv := fmt.Sprintf("%s", r.Service)
-	extra := ""
-	if r.WebTitle != "" {
-		extra = " │ " + r.WebTitle
-	}
 
-	return fmt.Sprintf("%s %s %s %s%s",
+	return fmt.Sprintf("%s %s %s %s",
 		tsStyle,
 		style.Render(icon),
 		lipgloss.NewStyle().Foreground(lipgloss.Color("#EEE")).Render(info),
-		lipgloss.NewStyle().Foreground(t.Text).Faint(true).Render(srv),
-		lipgloss.NewStyle().Foreground(t.Primary).Render(extra),
+		lipgloss.NewStyle().Foreground(t.Primary).Render(infoText),
 	)
 }
 
-// --- 8. WORKERS ---
+// ---------------------------------------------------------
+// WORKERS & IDENTITY ENGINE (NETWORK LAYER)
+// ---------------------------------------------------------
 
+// probeHTTP attempts to fetch web headers and title.
 func probeHTTP(ip string, port int, timeout time.Duration) (string, string) {
 	scheme := "http"
 	if port == 443 || port == 8443 {
@@ -618,62 +727,117 @@ func probeHTTP(ip string, port int, timeout time.Duration) (string, string) {
 	}
 	url := fmt.Sprintf("%s://%s:%d", scheme, ip, port)
 	client := &http.Client{Transport: &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}, Timeout: timeout + 500*time.Millisecond}
-	resp, err := client.Get(url)
+
+	// ACTIVE PROBE: HEAD Request to get headers without body
+	resp, err := client.Head(url)
 	if err != nil {
-		return "", ""
+		// Fallback to GET if HEAD fails
+		resp, err = client.Get(url)
+		if err != nil {
+			return "", ""
+		}
 	}
 	defer resp.Body.Close()
+
 	srv := resp.Header.Get("Server")
 	if srv == "" {
-		srv = "Hidden"
+		srv = "Unknown Web Server"
 	}
-	buf := make([]byte, 2048)
-	n, _ := io.ReadFull(resp.Body, buf)
-	re := regexp.MustCompile(`(?i)<title>(.*?)</title>`)
-	matches := re.FindStringSubmatch(string(buf[:n]))
+
+	// Fetch a small chunk of body for title if possible
 	title := "No Title"
-	if len(matches) > 1 {
-		title = strings.TrimSpace(matches[1])
+	if resp.Request.Method == "GET" {
+		buf := make([]byte, 2048)
+		n, _ := io.ReadFull(resp.Body, buf)
+		re := regexp.MustCompile(`(?i)<title>(.*?)</title>`)
+		matches := re.FindStringSubmatch(string(buf[:n]))
+		if len(matches) > 1 {
+			title = strings.TrimSpace(matches[1])
+		}
 	}
+
 	return title, srv
 }
 
-func scanPort(ctx context.Context, target ScanTarget, timeout time.Duration) *ScanResult {
+// grabBanner attempts to read the initial server greeting (for SSH, FTP, etc).
+func grabBanner(ip string, port int, timeout time.Duration) string {
+	conn, err := net.DialTimeout("tcp", fmt.Sprintf("%s:%d", ip, port), timeout)
+	if err != nil {
+		return ""
+	}
+	defer conn.Close()
+
+	conn.SetReadDeadline(time.Now().Add(2 * time.Second)) // Wait 2s for greeting
+	buf := make([]byte, 1024)
+	n, err := conn.Read(buf)
+	if err != nil || n == 0 {
+		return ""
+	}
+
+	// Filter non-printable characters
+	banner := string(buf[:n])
+	return strings.Map(func(r rune) rune {
+		if r >= 32 && r <= 126 {
+			return r
+		}
+		return -1
+	}, banner)
+}
+
+// scanPort performs the actual TCP connection and optional deep scanning.
+func scanPort(ctx context.Context, target ScanTarget, timeout time.Duration, deep bool) *ScanResult {
 	select {
 	case <-ctx.Done():
 		return nil
 	default:
 	}
+
+	// 1. Basic Connect Scan
 	addr := net.JoinHostPort(target.IP, strconv.Itoa(target.Port))
 	conn, err := net.DialTimeout("tcp", addr, timeout)
 	if err != nil {
 		return nil
 	}
-	defer conn.Close()
-	conn.SetReadDeadline(time.Now().Add(300 * time.Millisecond))
-	buf := make([]byte, 256)
-	n, _ := conn.Read(buf)
-	banner := strings.Map(func(r rune) rune {
-		if r >= 32 && r <= 126 {
-			return r
-		}
-		return -1
-	}, string(buf[:n]))
+	conn.Close() // Close initial check connection
+
 	svc := CommonPorts[target.Port]
 	if svc == "" {
 		svc = "TCP"
-	}
-	wTitle, wSrv := "", ""
-	if target.Port == 80 || target.Port == 443 || target.Port == 8080 {
-		wTitle, wSrv = probeHTTP(target.IP, target.Port, timeout)
 	}
 	risk := RiskWeights[target.Port]
 	if risk == 0 {
 		risk = 1
 	}
-	return &ScanResult{IP: target.IP, Port: target.Port, Service: svc, Banner: banner, WebTitle: wTitle, WebServer: wSrv, RiskScore: risk, Timestamp: time.Now()}
+	banner := ""
+	wTitle, wSrv := "", ""
+
+	// 2. DEEP SCAN (Identity Module)
+	if deep {
+		// Identify Web Services
+		if target.Port == 80 || target.Port == 443 || target.Port == 8080 || target.Port == 8443 {
+			wTitle, wSrv = probeHTTP(target.IP, target.Port, timeout)
+			if wSrv != "" {
+				banner = wSrv
+			}
+		} else {
+			// Identify Generic TCP Services (SSH, FTP...)
+			banner = grabBanner(target.IP, target.Port, timeout)
+		}
+	}
+
+	return &ScanResult{
+		IP:        target.IP,
+		Port:      target.Port,
+		Service:   svc,
+		Banner:    banner,
+		WebTitle:  wTitle,
+		WebServer: wSrv,
+		RiskScore: risk,
+		Timestamp: time.Now(),
+	}
 }
 
+// worker acts as a consumer for the jobs channel.
 func worker(ctx context.Context, jobs <-chan ScanTarget, results chan<- *ScanResult, wg *sync.WaitGroup, prof ScanProfile) {
 	defer wg.Done()
 	for target := range jobs {
@@ -684,15 +848,19 @@ func worker(ctx context.Context, jobs <-chan ScanTarget, results chan<- *ScanRes
 			if prof.Delay > 0 {
 				time.Sleep(time.Duration(rand.Intn(int(prof.Delay))))
 			}
-			res := scanPort(ctx, target, prof.Timeout)
+			// Execute scan with profile settings
+			res := scanPort(ctx, target, prof.Timeout, prof.DeepScan)
 			results <- res
 		}
 	}
 }
 
-// --- 9. MAIN ---
+// ---------------------------------------------------------
+// MAIN EXECUTION
+// ---------------------------------------------------------
 
 func main() {
+	// Define Scan Profiles
 	profiles := map[string]ScanProfile{
 		"scout":  {ID: "scout", Name: "SCOUT", Timeout: 500 * time.Millisecond, Threads: 500, PortRange: "1-1024", Theme: ThemeScout},
 		"shadow": {ID: "shadow", Name: "SHADOW", Timeout: 2000 * time.Millisecond, Delay: 1500 * time.Millisecond, Threads: 10, PortRange: "1-1000", Randomize: true, Theme: ThemeShadow},
@@ -700,12 +868,15 @@ func main() {
 		"titan":  {ID: "titan", Name: "TITAN", Timeout: 600 * time.Millisecond, Threads: 800, PortRange: "1-65535", Theme: ThemeTitan},
 	}
 
-	hostPtr := flag.String("host", "", "IP")
-	profilePtr := flag.String("mode", "scout", "Mode")
-	jsonPtr := flag.String("json", "", "JSON")
-	htmlPtr := flag.String("html", "", "HTML")
+	// Parse Command Line Flags
+	hostPtr := flag.String("host", "", "Target IP or CIDR range")
+	profilePtr := flag.String("mode", "scout", "Scan profile (scout, shadow, blitz, titan)")
+	jsonPtr := flag.String("json", "", "Output results to JSON file")
+	htmlPtr := flag.String("html", "", "Output results to HTML report")
+	deepPtr := flag.Bool("deep", false, "Enable Deep Service Identity Scan (Slow)")
 	flag.Parse()
 
+	// Show Help if no host is provided
 	if *hostPtr == "" {
 		p := tea.NewProgram(initialHelpModel(), tea.WithAltScreen())
 		if _, err := p.Run(); err != nil {
@@ -715,6 +886,7 @@ func main() {
 		return
 	}
 
+	// Setup Profile
 	modeKey := strings.ToLower(*profilePtr)
 	if modeKey == "tytan" {
 		modeKey = "titan"
@@ -724,6 +896,10 @@ func main() {
 		prof = profiles["scout"]
 	}
 
+	// Inject Flags into Profile
+	prof.DeepScan = *deepPtr
+
+	// Target Generation
 	ports, _ := parsePorts(prof.PortRange)
 	ips, _ := parseTargets(*hostPtr)
 	if prof.Randomize {
@@ -732,17 +908,20 @@ func main() {
 	}
 	totalJobs := len(ips) * len(ports)
 
+	// Concurrency Channels
 	jobs := make(chan ScanTarget, prof.Threads)
 	results := make(chan *ScanResult, prof.Threads)
 	var wg sync.WaitGroup
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
+	// Spawn Workers
 	for i := 0; i < prof.Threads; i++ {
 		wg.Add(1)
 		go worker(ctx, jobs, results, &wg, prof)
 	}
 
+	// Job Feeder
 	go func() {
 		for _, ip := range ips {
 			for _, p := range ports {
@@ -758,6 +937,7 @@ func main() {
 		close(results)
 	}()
 
+	// Start UI
 	p := tea.NewProgram(initialScanModel(results, totalJobs, prof, *hostPtr), tea.WithAltScreen())
 	finalModel, err := p.Run()
 	if err != nil {
@@ -765,6 +945,7 @@ func main() {
 		os.Exit(1)
 	}
 
+	// Post-Scan Reporting
 	if m, ok := finalModel.(scanModel); ok {
 		if *jsonPtr != "" {
 			d, _ := json.MarshalIndent(m.results, "", "  ")
@@ -773,11 +954,16 @@ func main() {
 		if *htmlPtr != "" {
 			generateHTMLReport(*htmlPtr, m.results)
 		}
-		fmt.Printf("\n%s[+] SESSION CLOSED.%s %d ports identified on %s.\n", ColorGreen, ColorReset, len(m.results), *hostPtr)
+		// Final Clean Output
+		s := lipgloss.NewStyle().Foreground(lipgloss.Color("#00FF00")).Bold(true)
+		fmt.Println(s.Render(fmt.Sprintf("\n[+] SESSION CLOSED. %d ports identified on %s.\n", len(m.results), *hostPtr)))
 	}
 }
 
-// --- UTILS ---
+// ---------------------------------------------------------
+// UTILITIES & HELPERS
+// ---------------------------------------------------------
+
 func parseTargets(input string) ([]string, error) {
 	if !strings.Contains(input, "/") {
 		return []string{input}, nil
@@ -797,6 +983,7 @@ func parseTargets(input string) ([]string, error) {
 	}
 	return ips, nil
 }
+
 func parsePorts(s string) ([]int, error) {
 	var p []int
 	if s == "all" {
@@ -821,6 +1008,7 @@ func parsePorts(s string) ([]int, error) {
 	}
 	return p, nil
 }
+
 func generateHTMLReport(filename string, results []ScanResult) {
 	f, _ := os.Create(filename)
 	defer f.Close()
@@ -829,5 +1017,7 @@ func generateHTMLReport(filename string, results []ScanResult) {
 		f.WriteString(fmt.Sprintf("<li>%s:%d (%s)</li>", r.IP, r.Port, r.Service))
 	}
 	f.WriteString("</ul></body></html>")
-	fmt.Printf("%s[✓] Rapport HTML : %s%s\n", ColorGreen, filename, ColorReset)
+
+	s := lipgloss.NewStyle().Foreground(lipgloss.Color("#00FF00")).Bold(true)
+	fmt.Println(s.Render(fmt.Sprintf("[✓] HTML Report saved: %s", filename)))
 }
