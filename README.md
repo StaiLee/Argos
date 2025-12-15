@@ -15,10 +15,11 @@
 
 Built in pure Golang, it leverages a massive concurrent architecture to scan networks at blazing speeds while providing a cinematic, **"God Eye" TUI** (Terminal User Interface). Unlike traditional tools that output static text, Argos deploys a live, interactive war room dashboard.
 
-### ✨ OMEGA Features (v5.0.0)
+### ✨ OMEGA Features (v10.1.0)
 
-* **📺 OMEGA Dashboard:** A responsive, split-view TUI featuring real-time telemetry, **network activity sparklines**, and system diagnostics (RAM/CPU/Goroutines).
-* **🧠 The Oracle Engine:** Automatic **Risk Assessment Scoring** (Critical/High/Low) and **Web Intelligence** extraction (HTTP Titles & Server Headers).
+* **🧠 Identity Engine (NEW):** Active Service Fingerprinting via the `-deep` flag. Extracts SSH versions, FTP banners, and SMTP greetings.
+* **📺 God Eye Dashboard:** A responsive, split-view TUI featuring real-time telemetry, **network activity sparklines**, and system diagnostics (RAM/CPU/Goroutines).
+* **🔮 The Oracle Engine:** Automatic **Risk Assessment Scoring** (Critical/High/Low) and **Web Intelligence** extraction (HTTP Titles & Server Headers).
 * **🎨 Dynamic Tactical Themes:**
     * 🔥 **BLITZ:** High-contrast Neon Red/Gold.
     * ❄️ **TITAN:** Deep Corporate Cyan/Blue.
@@ -39,7 +40,7 @@ Built in pure Golang, it leverages a massive concurrent architecture to scan net
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/StaiLee/Argos]
+git clone [https://github.com/StaiLee/Argos.git](https://github.com/StaiLee/Argos.git)
 cd Argos
 
 # 2. Install dependencies (BubbleTea framework)
@@ -73,12 +74,21 @@ Argos comes with 4 battle-tested presets. Select one using the `-mode` flag.
 | **BLITZ** | `-mode blitz` | **Aggressive Strike.** Max speed, no delay. Very noisy. | CTFs, Internal Labs, Fast Sweep. |
 | **TITAN** | `-mode titan` | **Deep Audit.** Scans ALL 65,535 ports. Heavy load. | Full Vulnerability Assessment. |
 
-### 🚩 Advanced Examples
+### 🚩 Advanced Flags
 
-**1. The "God Eye" Experience (Titan Mode)**
-Launch a full audit with the Blue/Cyan theme and detailed logs.
+| Flag | Description |
+| :--- | :--- |
+| `-deep` | **(NEW)** Enable Active Identity Grabbing. Extracts SSH versions, Web Headers, and FTP banners. Slower but richer. |
+| `-p` | Override ports (e.g., `-p 22,80` or `-p 1-5000`). |
+| `-random` | Force port shuffling to evade simple firewall rules. |
+| `-json` / `-html` | Export results to file. |
+
+### 💡 Advanced Examples
+
+**1. The "Deep Identity" Scan (New)**
+Identify service versions (SSH, Apache, Nginx) alongside open ports.
 ```bash
-argos -host 10.10.50.2 -mode titan
+argos -host 10.10.10.5 -mode scout -deep
 ```
 
 **2. Subnet Sweep (Blitz Mode)**
@@ -107,8 +117,9 @@ Argos demonstrates the power of **Go Concurrency Patterns** mixed with the **ELM
 
 1.  **The Feeder:** Pushes targets into a buffered channel.
 2.  **The Worker Pool:** Spawns 500-2000 micro-threads (Goroutines) to handle network I/O efficiently.
-3.  **The Oracle:** Analyzes responses (Banner Grabbing, HTTP Headers) to compute a Risk Score.
-4.  **The UI Engine (Bubble Tea):** Renders the TUI at 60fps, handling keyboard events and window resizing without blocking the scan logic.
+3.  **The Identity Module (Deep Scan):** Performs active probes (Banner Grabbing, HEAD requests) to identify service versions.
+4.  **The Oracle:** Analyzes responses to compute a Risk Score.
+5.  **The UI Engine (Bubble Tea):** Renders the TUI at 60fps, handling keyboard events and window resizing without blocking the scan logic.
 
 ```mermaid
 graph TD;
@@ -116,7 +127,7 @@ graph TD;
     Jobs --> Worker1[Worker 1];
     Jobs --> Worker2[Worker 2];
     Jobs --> Worker3[Worker 3];
-    Worker1 -->|Probe| Network((Target));
+    Worker1 -->|Probe & Deep Scan| Network((Target));
     Network -->|Banner/Headers| Results(Channel: Results);
     Results --> Oracle[The Oracle Engine];
     Oracle -->|Telemetry & Logs| Dashboard[God Eye TUI];
