@@ -128,7 +128,7 @@ graph TD;
     Generator[Job Generator] -->|Randomized Push| Jobs(Channel: Jobs);
     Jobs --> Worker1[Worker 1];
     Jobs --> Worker2[Worker 2];
-    Worker1 -->|Ghost Engine (Proxy Rotation)| Network((Target));
+    Worker1 -->|Ghost Engine - Proxy Rotation| Network((Target));
     Network -->|Banner/Headers| Results(Channel: Results);
     Results --> Oracle[The Oracle Engine];
     Oracle -->|Telemetry & Logs| Dashboard[God Eye TUI];
