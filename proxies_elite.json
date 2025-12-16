@@ -1,0 +1,4232 @@
+[
+  {
+    "address": "104.248.207.60:80",
+    "protocol": "http",
+    "latency_ms": 26,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "5.189.146.57:80",
+    "protocol": "http",
+    "latency_ms": 31,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "193.108.118.37:80",
+    "protocol": "http",
+    "latency_ms": 31,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "130.180.208.145:80",
+    "protocol": "http",
+    "latency_ms": 32,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "82.210.56.251:80",
+    "protocol": "http",
+    "latency_ms": 32,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "3.8.120.173:3128",
+    "protocol": "http",
+    "latency_ms": 33,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "157.90.167.201:80",
+    "protocol": "http",
+    "latency_ms": 37,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "116.203.27.109:80",
+    "protocol": "http",
+    "latency_ms": 41,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "52.166.240.42:80",
+    "protocol": "http",
+    "latency_ms": 44,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "37.120.189.106:80",
+    "protocol": "http",
+    "latency_ms": 55,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "37.59.110.239:8080",
+    "protocol": "http",
+    "latency_ms": 58,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "141.253.118.174:80",
+    "protocol": "http",
+    "latency_ms": 66,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "40.89.145.14:80",
+    "protocol": "http",
+    "latency_ms": 69,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "195.26.224.135:80",
+    "protocol": "http",
+    "latency_ms": 70,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "66.201.5.0:3128",
+    "protocol": "http",
+    "latency_ms": 76,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "83.97.79.103:80",
+    "protocol": "http",
+    "latency_ms": 77,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "153.19.91.77:80",
+    "protocol": "http",
+    "latency_ms": 79,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "62.87.154.36:80",
+    "protocol": "http",
+    "latency_ms": 81,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "141.98.153.86:80",
+    "protocol": "http",
+    "latency_ms": 82,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "188.245.218.56:80",
+    "protocol": "http",
+    "latency_ms": 85,
+    "timestamp": "2025-12-16 04:39"
+  },
+  {
+    "address": "167.172.181.111:80",
+    "protocol": "http",
+    "latency_ms": 85,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "89.169.9.180:80",
+    "protocol": "http",
+    "latency_ms": 86,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "103.228.171.195:80",
+    "protocol": "http",
+    "latency_ms": 89,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "80.74.54.148:3128",
+    "protocol": "http",
+    "latency_ms": 91,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "176.98.40.209:80",
+    "protocol": "http",
+    "latency_ms": 91,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "162.19.91.165:80",
+    "protocol": "http",
+    "latency_ms": 91,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "91.98.78.143:80",
+    "protocol": "http",
+    "latency_ms": 92,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "34.120.39.81:80",
+    "protocol": "http",
+    "latency_ms": 93,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "89.58.57.45:80",
+    "protocol": "http",
+    "latency_ms": 97,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "185.203.117.35:8080",
+    "protocol": "http",
+    "latency_ms": 99,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "89.58.55.33:80",
+    "protocol": "http",
+    "latency_ms": 102,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "193.36.85.226:80",
+    "protocol": "http",
+    "latency_ms": 103,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "139.162.200.213:80",
+    "protocol": "http",
+    "latency_ms": 113,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "185.187.92.42:80",
+    "protocol": "http",
+    "latency_ms": 114,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "81.23.127.90:8080",
+    "protocol": "http",
+    "latency_ms": 114,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "65.109.176.217:80",
+    "protocol": "http",
+    "latency_ms": 116,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "77.42.31.147:80",
+    "protocol": "http",
+    "latency_ms": 120,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "80.78.31.23:80",
+    "protocol": "http",
+    "latency_ms": 133,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "84.39.112.144:3128",
+    "protocol": "http",
+    "latency_ms": 135,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "81.169.213.169:8888",
+    "protocol": "http",
+    "latency_ms": 138,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "145.14.158.55:1080",
+    "protocol": "socks4",
+    "latency_ms": 150,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "45.92.108.112:80",
+    "protocol": "http",
+    "latency_ms": 152,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "18.153.96.159:80",
+    "protocol": "http",
+    "latency_ms": 157,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "51.75.123.179:8000",
+    "protocol": "http",
+    "latency_ms": 157,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "161.35.60.102:80",
+    "protocol": "http",
+    "latency_ms": 160,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "108.61.23.18:80",
+    "protocol": "http",
+    "latency_ms": 166,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "195.114.209.50:80",
+    "protocol": "http",
+    "latency_ms": 167,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "46.47.197.210:3128",
+    "protocol": "http",
+    "latency_ms": 169,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "188.191.165.159:8080",
+    "protocol": "http",
+    "latency_ms": 173,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "89.169.6.160:80",
+    "protocol": "http",
+    "latency_ms": 182,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "23.148.152.46:80",
+    "protocol": "http",
+    "latency_ms": 190,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "149.56.12.18:80",
+    "protocol": "http",
+    "latency_ms": 191,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "209.126.6.159:80",
+    "protocol": "http",
+    "latency_ms": 200,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "5.251.113.96:80",
+    "protocol": "http",
+    "latency_ms": 200,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "142.93.202.130:3128",
+    "protocol": "http",
+    "latency_ms": 202,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "176.114.249.239:80",
+    "protocol": "http",
+    "latency_ms": 204,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "46.4.72.215:80",
+    "protocol": "http",
+    "latency_ms": 204,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "85.220.141.220:80",
+    "protocol": "http",
+    "latency_ms": 207,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "91.107.171.19:80",
+    "protocol": "http",
+    "latency_ms": 213,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "91.222.238.112:80",
+    "protocol": "http",
+    "latency_ms": 218,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "79.110.200.148:8081",
+    "protocol": "http",
+    "latency_ms": 219,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "5.161.149.111:80",
+    "protocol": "http",
+    "latency_ms": 219,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "150.136.163.51:80",
+    "protocol": "http",
+    "latency_ms": 228,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "5.161.155.252:80",
+    "protocol": "http",
+    "latency_ms": 236,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "172.200.72.48:80",
+    "protocol": "http",
+    "latency_ms": 237,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "85.214.204.79:80",
+    "protocol": "http",
+    "latency_ms": 238,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "98.90.22.109:80",
+    "protocol": "http",
+    "latency_ms": 238,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "79.110.200.27:8000",
+    "protocol": "http",
+    "latency_ms": 239,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "23.21.173.129:80",
+    "protocol": "http",
+    "latency_ms": 244,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "46.161.6.165:8080",
+    "protocol": "http",
+    "latency_ms": 257,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "3.224.26.242:80",
+    "protocol": "http",
+    "latency_ms": 258,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "148.113.172.51:8080",
+    "protocol": "http",
+    "latency_ms": 258,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "23.190.168.41:80",
+    "protocol": "http",
+    "latency_ms": 259,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "46.62.254.141:80",
+    "protocol": "http",
+    "latency_ms": 259,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "198.111.166.184:80",
+    "protocol": "http",
+    "latency_ms": 263,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "87.107.110.105:80",
+    "protocol": "http",
+    "latency_ms": 263,
+    "timestamp": "2025-12-16 04:39"
+  },
+  {
+    "address": "154.16.146.48:80",
+    "protocol": "http",
+    "latency_ms": 267,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "102.223.20.217:80",
+    "protocol": "http",
+    "latency_ms": 268,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "157.180.118.86:80",
+    "protocol": "http",
+    "latency_ms": 270,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "34.44.49.215:80",
+    "protocol": "http",
+    "latency_ms": 271,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "154.16.146.45:80",
+    "protocol": "http",
+    "latency_ms": 271,
+    "timestamp": "2025-12-16 04:39"
+  },
+  {
+    "address": "90.156.169.163:80",
+    "protocol": "http",
+    "latency_ms": 273,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "154.16.146.41:80",
+    "protocol": "http",
+    "latency_ms": 273,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "77.110.104.126:80",
+    "protocol": "http",
+    "latency_ms": 274,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "188.40.57.101:80",
+    "protocol": "http",
+    "latency_ms": 277,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "154.16.146.47:80",
+    "protocol": "http",
+    "latency_ms": 284,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "38.60.196.214:80",
+    "protocol": "http",
+    "latency_ms": 284,
+    "timestamp": "2025-12-16 04:39"
+  },
+  {
+    "address": "31.135.21.185:80",
+    "protocol": "http",
+    "latency_ms": 287,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "213.73.25.230:8080",
+    "protocol": "http",
+    "latency_ms": 288,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "168.234.75.119:80",
+    "protocol": "http",
+    "latency_ms": 289,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "191.101.1.116:80",
+    "protocol": "http",
+    "latency_ms": 289,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "192.151.153.243:80",
+    "protocol": "http",
+    "latency_ms": 296,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "204.157.240.26:80",
+    "protocol": "http",
+    "latency_ms": 300,
+    "timestamp": "2025-12-16 04:47"
+  },
+  {
+    "address": "204.10.70.33:80",
+    "protocol": "http",
+    "latency_ms": 300,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "81.196.53.88:80",
+    "protocol": "http",
+    "latency_ms": 305,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "104.168.15.42:80",
+    "protocol": "http",
+    "latency_ms": 309,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "156.67.217.159:80",
+    "protocol": "http",
+    "latency_ms": 319,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "110.38.68.38:80",
+    "protocol": "http",
+    "latency_ms": 326,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "156.67.214.232:80",
+    "protocol": "http",
+    "latency_ms": 329,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "174.136.204.40:80",
+    "protocol": "http",
+    "latency_ms": 330,
+    "timestamp": "2025-12-16 04:39"
+  },
+  {
+    "address": "31.10.83.158:8080",
+    "protocol": "http",
+    "latency_ms": 331,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "103.242.104.101:8080",
+    "protocol": "http",
+    "latency_ms": 338,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "20.247.228.80:80",
+    "protocol": "http",
+    "latency_ms": 340,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "154.17.224.118:80",
+    "protocol": "http",
+    "latency_ms": 343,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "154.17.228.122:80",
+    "protocol": "http",
+    "latency_ms": 345,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "91.109.204.213:80",
+    "protocol": "http",
+    "latency_ms": 348,
+    "timestamp": "2025-12-16 04:39"
+  },
+  {
+    "address": "23.247.136.254:80",
+    "protocol": "http",
+    "latency_ms": 351,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "154.16.146.42:80",
+    "protocol": "http",
+    "latency_ms": 352,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "195.234.68.34:3128",
+    "protocol": "http",
+    "latency_ms": 353,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "103.76.201.110:8080",
+    "protocol": "http",
+    "latency_ms": 353,
+    "timestamp": "2025-12-16 04:46"
+  },
+  {
+    "address": "87.239.31.42:80",
+    "protocol": "http",
+    "latency_ms": 354,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "198.49.68.80:80",
+    "protocol": "http",
+    "latency_ms": 376,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "188.239.43.6:80",
+    "protocol": "http",
+    "latency_ms": 378,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "176.106.241.50:80",
+    "protocol": "http",
+    "latency_ms": 382,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "117.216.44.13:80",
+    "protocol": "http",
+    "latency_ms": 382,
+    "timestamp": "2025-12-16 04:47"
+  },
+  {
+    "address": "83.143.30.97:7080",
+    "protocol": "http",
+    "latency_ms": 382,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "71.60.160.245:80",
+    "protocol": "http",
+    "latency_ms": 384,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "37.79.248.2:8090",
+    "protocol": "http",
+    "latency_ms": 386,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "103.75.117.79:80",
+    "protocol": "http",
+    "latency_ms": 396,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "47.236.162.43:80",
+    "protocol": "http",
+    "latency_ms": 400,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "35.88.74.245:80",
+    "protocol": "http",
+    "latency_ms": 401,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "115.239.234.43:7302",
+    "protocol": "http",
+    "latency_ms": 402,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "34.87.84.105:80",
+    "protocol": "http",
+    "latency_ms": 404,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "16.163.88.228:80",
+    "protocol": "http",
+    "latency_ms": 407,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "62.72.11.136:80",
+    "protocol": "http",
+    "latency_ms": 411,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "59.153.100.98:80",
+    "protocol": "http",
+    "latency_ms": 420,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "120.78.229.212:80",
+    "protocol": "http",
+    "latency_ms": 420,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "8.219.111.175:80",
+    "protocol": "http",
+    "latency_ms": 426,
+    "timestamp": "2025-12-16 04:47"
+  },
+  {
+    "address": "177.124.177.116:80",
+    "protocol": "http",
+    "latency_ms": 429,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "185.36.145.215:80",
+    "protocol": "http",
+    "latency_ms": 430,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "97.74.87.226:80",
+    "protocol": "http",
+    "latency_ms": 433,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "212.114.194.72:80",
+    "protocol": "http",
+    "latency_ms": 440,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "85.117.56.71:8080",
+    "protocol": "http",
+    "latency_ms": 441,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "172.193.178.226:80",
+    "protocol": "http",
+    "latency_ms": 441,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "47.74.157.194:80",
+    "protocol": "http",
+    "latency_ms": 445,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "12.50.107.219:80",
+    "protocol": "http",
+    "latency_ms": 455,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "200.33.20.25:80",
+    "protocol": "http",
+    "latency_ms": 465,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "185.135.69.34:80",
+    "protocol": "http",
+    "latency_ms": 470,
+    "timestamp": "2025-12-16 04:39"
+  },
+  {
+    "address": "103.174.102.127:80",
+    "protocol": "http",
+    "latency_ms": 472,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "212.114.194.73:80",
+    "protocol": "http",
+    "latency_ms": 473,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "34.81.160.132:80",
+    "protocol": "http",
+    "latency_ms": 473,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "190.116.28.148:80",
+    "protocol": "http",
+    "latency_ms": 475,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "45.33.0.189:80",
+    "protocol": "http",
+    "latency_ms": 480,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "41.173.24.38:80",
+    "protocol": "http",
+    "latency_ms": 485,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "58.152.58.208:80",
+    "protocol": "http",
+    "latency_ms": 488,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "182.155.254.159:80",
+    "protocol": "http",
+    "latency_ms": 497,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "182.155.48.223:80",
+    "protocol": "http",
+    "latency_ms": 499,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "153.127.194.62:80",
+    "protocol": "http",
+    "latency_ms": 517,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "217.76.39.4:1080",
+    "protocol": "socks5",
+    "latency_ms": 518,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "212.114.194.78:80",
+    "protocol": "http",
+    "latency_ms": 525,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "172.235.16.236:80",
+    "protocol": "http",
+    "latency_ms": 539,
+    "timestamp": "2025-12-16 04:46"
+  },
+  {
+    "address": "47.91.14.62:80",
+    "protocol": "http",
+    "latency_ms": 543,
+    "timestamp": "2025-12-16 04:46"
+  },
+  {
+    "address": "62.84.83.218:80",
+    "protocol": "http",
+    "latency_ms": 550,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "200.97.9.38:8080",
+    "protocol": "http",
+    "latency_ms": 568,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "58.152.22.150:80",
+    "protocol": "http",
+    "latency_ms": 574,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "164.163.40.16:10000",
+    "protocol": "http",
+    "latency_ms": 576,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "8.219.61.52:80",
+    "protocol": "http",
+    "latency_ms": 578,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "185.8.175.147:80",
+    "protocol": "http",
+    "latency_ms": 581,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.218.220.123:8080",
+    "protocol": "http",
+    "latency_ms": 591,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "193.43.159.200:80",
+    "protocol": "http",
+    "latency_ms": 592,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "34.146.60.198:80",
+    "protocol": "http",
+    "latency_ms": 600,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "172.238.22.205:80",
+    "protocol": "http",
+    "latency_ms": 601,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "13.78.120.128:80",
+    "protocol": "http",
+    "latency_ms": 602,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "176.126.164.213:80",
+    "protocol": "http",
+    "latency_ms": 609,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "194.199.98.103:80",
+    "protocol": "http",
+    "latency_ms": 615,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "196.1.93.10:80",
+    "protocol": "http",
+    "latency_ms": 621,
+    "timestamp": "2025-12-16 04:39"
+  },
+  {
+    "address": "52.140.40.92:80",
+    "protocol": "http",
+    "latency_ms": 630,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "212.227.65.114:80",
+    "protocol": "http",
+    "latency_ms": 636,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "190.110.226.122:80",
+    "protocol": "http",
+    "latency_ms": 644,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "218.252.100.222:80",
+    "protocol": "http",
+    "latency_ms": 652,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "4.213.167.178:80",
+    "protocol": "http",
+    "latency_ms": 657,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "91.132.92.231:80",
+    "protocol": "http",
+    "latency_ms": 690,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "12.50.107.222:80",
+    "protocol": "http",
+    "latency_ms": 695,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "184.170.249.65:4145",
+    "protocol": "socks5",
+    "latency_ms": 701,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "79.175.188.151:80",
+    "protocol": "http",
+    "latency_ms": 709,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "199.229.254.129:4145",
+    "protocol": "socks5",
+    "latency_ms": 710,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "67.43.236.18:31513",
+    "protocol": "http",
+    "latency_ms": 712,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "110.5.113.227:80",
+    "protocol": "http",
+    "latency_ms": 713,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "103.86.131.62:80",
+    "protocol": "http",
+    "latency_ms": 715,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "199.102.104.70:4145",
+    "protocol": "socks4",
+    "latency_ms": 727,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "183.110.216.159:8090",
+    "protocol": "http",
+    "latency_ms": 731,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "72.37.217.3:4145",
+    "protocol": "socks5",
+    "latency_ms": 734,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "82.115.60.66:80",
+    "protocol": "http",
+    "latency_ms": 736,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "192.252.220.89:4145",
+    "protocol": "socks4",
+    "latency_ms": 745,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "104.200.152.30:4145",
+    "protocol": "socks4",
+    "latency_ms": 761,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "221.153.92.39:80",
+    "protocol": "http",
+    "latency_ms": 762,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "68.71.249.158:4145",
+    "protocol": "socks4",
+    "latency_ms": 762,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "72.37.217.3:4145",
+    "protocol": "socks4",
+    "latency_ms": 768,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "85.209.161.102:80",
+    "protocol": "http",
+    "latency_ms": 772,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "210.177.178.148:80",
+    "protocol": "http",
+    "latency_ms": 772,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "68.71.249.153:48606",
+    "protocol": "socks4",
+    "latency_ms": 773,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "219.93.101.60:80",
+    "protocol": "http",
+    "latency_ms": 778,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "192.252.209.158:4145",
+    "protocol": "socks4",
+    "latency_ms": 787,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "199.116.114.11:4145",
+    "protocol": "socks5",
+    "latency_ms": 788,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "198.8.84.3:4145",
+    "protocol": "socks4",
+    "latency_ms": 788,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "219.93.101.63:80",
+    "protocol": "http",
+    "latency_ms": 789,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "198.8.94.174:39078",
+    "protocol": "socks4",
+    "latency_ms": 793,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "192.252.210.233:4145",
+    "protocol": "socks5",
+    "latency_ms": 794,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "199.102.106.94:4145",
+    "protocol": "socks4",
+    "latency_ms": 795,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "67.201.33.10:25283",
+    "protocol": "socks5",
+    "latency_ms": 797,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "142.54.228.193:4145",
+    "protocol": "socks5",
+    "latency_ms": 799,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "199.102.106.94:4145",
+    "protocol": "socks5",
+    "latency_ms": 800,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "192.111.138.29:4145",
+    "protocol": "socks4",
+    "latency_ms": 801,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "139.99.237.62:80",
+    "protocol": "http",
+    "latency_ms": 803,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "142.54.232.6:4145",
+    "protocol": "socks5",
+    "latency_ms": 803,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "142.54.237.34:4145",
+    "protocol": "socks5",
+    "latency_ms": 804,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "67.201.58.190:4145",
+    "protocol": "socks4",
+    "latency_ms": 805,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "43.200.30.144:80",
+    "protocol": "http",
+    "latency_ms": 811,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "103.63.190.72:8080",
+    "protocol": "http",
+    "latency_ms": 817,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "41.220.16.211:80",
+    "protocol": "http",
+    "latency_ms": 818,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "74.176.195.135:80",
+    "protocol": "http",
+    "latency_ms": 825,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "142.54.232.6:4145",
+    "protocol": "socks4",
+    "latency_ms": 828,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "192.111.139.163:19404",
+    "protocol": "socks5",
+    "latency_ms": 846,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "103.118.46.176:8080",
+    "protocol": "http",
+    "latency_ms": 849,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "68.71.243.14:4145",
+    "protocol": "socks4",
+    "latency_ms": 859,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "199.102.107.145:4145",
+    "protocol": "socks4",
+    "latency_ms": 898,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "62.33.134.61:1080",
+    "protocol": "socks5",
+    "latency_ms": 905,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "154.205.147.214:80",
+    "protocol": "http",
+    "latency_ms": 906,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "184.178.172.18:15280",
+    "protocol": "socks5",
+    "latency_ms": 908,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "192.111.139.165:4145",
+    "protocol": "socks5",
+    "latency_ms": 911,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "156.246.90.81:80",
+    "protocol": "http",
+    "latency_ms": 914,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "70.166.167.38:57728",
+    "protocol": "socks5",
+    "latency_ms": 916,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "98.188.47.150:4145",
+    "protocol": "socks5",
+    "latency_ms": 918,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "31.97.62.219:8080",
+    "protocol": "http",
+    "latency_ms": 918,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "98.175.31.222:4145",
+    "protocol": "socks4",
+    "latency_ms": 918,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "174.77.111.196:4145",
+    "protocol": "socks5",
+    "latency_ms": 921,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "72.195.34.60:27391",
+    "protocol": "socks5",
+    "latency_ms": 923,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "184.181.217.194:4145",
+    "protocol": "socks4",
+    "latency_ms": 926,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "184.178.172.3:4145",
+    "protocol": "socks4",
+    "latency_ms": 927,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "120.26.68.107:80",
+    "protocol": "http",
+    "latency_ms": 927,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "98.175.31.195:4145",
+    "protocol": "socks4",
+    "latency_ms": 932,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "72.195.34.35:27360",
+    "protocol": "socks4",
+    "latency_ms": 933,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "72.195.114.169:4145",
+    "protocol": "socks5",
+    "latency_ms": 938,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "184.181.217.220:4145",
+    "protocol": "socks4",
+    "latency_ms": 939,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "192.111.129.145:16894",
+    "protocol": "socks5",
+    "latency_ms": 940,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "98.181.137.80:4145",
+    "protocol": "socks5",
+    "latency_ms": 941,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "174.75.211.193:4145",
+    "protocol": "socks5",
+    "latency_ms": 943,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "184.181.217.210:4145",
+    "protocol": "socks5",
+    "latency_ms": 948,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "184.178.172.23:4145",
+    "protocol": "socks5",
+    "latency_ms": 949,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "103.205.64.153:80",
+    "protocol": "http",
+    "latency_ms": 953,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "50.210.166.34:80",
+    "protocol": "http",
+    "latency_ms": 955,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "184.178.172.14:4145",
+    "protocol": "socks4",
+    "latency_ms": 957,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "72.195.34.59:4145",
+    "protocol": "socks4",
+    "latency_ms": 958,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "98.181.137.83:4145",
+    "protocol": "socks5",
+    "latency_ms": 958,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "219.65.73.81:80",
+    "protocol": "http",
+    "latency_ms": 960,
+    "timestamp": "2025-12-16 04:39"
+  },
+  {
+    "address": "98.170.57.231:4145",
+    "protocol": "socks5",
+    "latency_ms": 961,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "68.1.210.189:4145",
+    "protocol": "socks4",
+    "latency_ms": 962,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "70.166.167.55:57745",
+    "protocol": "socks4",
+    "latency_ms": 974,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "192.252.215.5:16137",
+    "protocol": "socks5",
+    "latency_ms": 975,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "98.170.57.231:4145",
+    "protocol": "socks4",
+    "latency_ms": 990,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "98.188.47.150:4145",
+    "protocol": "socks4",
+    "latency_ms": 991,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "103.94.52.70:3128",
+    "protocol": "http",
+    "latency_ms": 994,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "24.249.199.4:4145",
+    "protocol": "socks4",
+    "latency_ms": 1000,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "184.181.217.201:4145",
+    "protocol": "socks5",
+    "latency_ms": 1000,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "72.195.34.42:4145",
+    "protocol": "socks4",
+    "latency_ms": 1004,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "103.65.237.92:5678",
+    "protocol": "http",
+    "latency_ms": 1008,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "184.178.172.3:4145",
+    "protocol": "socks5",
+    "latency_ms": 1034,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "115.79.57.201:8080",
+    "protocol": "http",
+    "latency_ms": 1034,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "149.202.91.219:80",
+    "protocol": "http",
+    "latency_ms": 1042,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "174.77.111.198:49547",
+    "protocol": "socks4",
+    "latency_ms": 1051,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "78.47.81.188:80",
+    "protocol": "http",
+    "latency_ms": 1065,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "192.252.216.81:4145",
+    "protocol": "socks4",
+    "latency_ms": 1066,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "41.191.203.161:80",
+    "protocol": "http",
+    "latency_ms": 1081,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "141.11.184.60:80",
+    "protocol": "http",
+    "latency_ms": 1086,
+    "timestamp": "2025-12-16 04:39"
+  },
+  {
+    "address": "78.47.177.19:80",
+    "protocol": "http",
+    "latency_ms": 1090,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "72.195.34.60:27391",
+    "protocol": "socks4",
+    "latency_ms": 1108,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "195.181.173.65:80",
+    "protocol": "http",
+    "latency_ms": 1124,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "38.54.71.67:80",
+    "protocol": "http",
+    "latency_ms": 1150,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "154.211.2.68:80",
+    "protocol": "http",
+    "latency_ms": 1153,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "185.193.125.78:80",
+    "protocol": "http",
+    "latency_ms": 1182,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "47.81.14.7:3128",
+    "protocol": "http",
+    "latency_ms": 1190,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "24.249.199.12:4145",
+    "protocol": "socks5",
+    "latency_ms": 1196,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "62.60.235.5:80",
+    "protocol": "http",
+    "latency_ms": 1199,
+    "timestamp": "2025-12-16 04:39"
+  },
+  {
+    "address": "72.195.101.99:4145",
+    "protocol": "socks5",
+    "latency_ms": 1218,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "192.252.214.20:15864",
+    "protocol": "socks4",
+    "latency_ms": 1219,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "89.116.88.19:80",
+    "protocol": "http",
+    "latency_ms": 1244,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "50.203.147.159:80",
+    "protocol": "http",
+    "latency_ms": 1264,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "185.190.154.39:80",
+    "protocol": "http",
+    "latency_ms": 1269,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "51.8.61.60:80",
+    "protocol": "http",
+    "latency_ms": 1273,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "68.1.210.189:4145",
+    "protocol": "socks5",
+    "latency_ms": 1278,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "87.95.146.131:80",
+    "protocol": "http",
+    "latency_ms": 1307,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "35.202.49.74:80",
+    "protocol": "http",
+    "latency_ms": 1316,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "89.108.83.137:1080",
+    "protocol": "socks5",
+    "latency_ms": 1342,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "49.7.11.187:80",
+    "protocol": "http",
+    "latency_ms": 1343,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "35.197.89.213:80",
+    "protocol": "http",
+    "latency_ms": 1344,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "36.67.136.27:5678",
+    "protocol": "http",
+    "latency_ms": 1350,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "185.227.111.133:80",
+    "protocol": "http",
+    "latency_ms": 1364,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "8.219.228.186:80",
+    "protocol": "http",
+    "latency_ms": 1366,
+    "timestamp": "2025-12-16 04:46"
+  },
+  {
+    "address": "94.182.146.250:8080",
+    "protocol": "http",
+    "latency_ms": 1401,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "200.19.177.120:80",
+    "protocol": "http",
+    "latency_ms": 1415,
+    "timestamp": "2025-12-16 04:47"
+  },
+  {
+    "address": "192.252.220.89:4145",
+    "protocol": "socks5",
+    "latency_ms": 1418,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "103.125.31.222:80",
+    "protocol": "http",
+    "latency_ms": 1419,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "117.54.114.97:80",
+    "protocol": "http",
+    "latency_ms": 1423,
+    "timestamp": "2025-12-16 04:47"
+  },
+  {
+    "address": "24.233.2.14:80",
+    "protocol": "http",
+    "latency_ms": 1431,
+    "timestamp": "2025-12-16 04:47"
+  },
+  {
+    "address": "98.191.0.37:4145",
+    "protocol": "socks4",
+    "latency_ms": 1436,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "45.227.193.166:8080",
+    "protocol": "http",
+    "latency_ms": 1458,
+    "timestamp": "2025-12-16 04:46"
+  },
+  {
+    "address": "184.170.248.5:4145",
+    "protocol": "socks5",
+    "latency_ms": 1473,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "203.95.198.177:8080",
+    "protocol": "http",
+    "latency_ms": 1474,
+    "timestamp": "2025-12-16 04:46"
+  },
+  {
+    "address": "185.235.16.12:80",
+    "protocol": "http",
+    "latency_ms": 1504,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "47.56.110.204:8990",
+    "protocol": "http",
+    "latency_ms": 1523,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "103.231.78.36:80",
+    "protocol": "http",
+    "latency_ms": 1532,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "46.62.248.217:80",
+    "protocol": "http",
+    "latency_ms": 1568,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "157.175.169.150:80",
+    "protocol": "http",
+    "latency_ms": 1572,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "193.53.127.169:80",
+    "protocol": "http",
+    "latency_ms": 1573,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "209.146.104.56:80",
+    "protocol": "http",
+    "latency_ms": 1581,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "85.143.254.38:1080",
+    "protocol": "socks5",
+    "latency_ms": 1588,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "200.174.198.32:8888",
+    "protocol": "http",
+    "latency_ms": 1591,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "47.242.150.74:8000",
+    "protocol": "http",
+    "latency_ms": 1620,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "13.235.43.214:80",
+    "protocol": "http",
+    "latency_ms": 1647,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "203.19.38.114:1080",
+    "protocol": "http",
+    "latency_ms": 1699,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "184.170.245.148:4145",
+    "protocol": "socks5",
+    "latency_ms": 1713,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "181.16.201.37:80",
+    "protocol": "http",
+    "latency_ms": 1729,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "74.119.144.60:4145",
+    "protocol": "socks5",
+    "latency_ms": 1730,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "154.31.115.210:80",
+    "protocol": "http",
+    "latency_ms": 1745,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "104.200.152.30:4145",
+    "protocol": "socks5",
+    "latency_ms": 1746,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "199.58.185.9:4145",
+    "protocol": "socks5",
+    "latency_ms": 1749,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "104.200.135.46:4145",
+    "protocol": "socks4",
+    "latency_ms": 1763,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "137.184.179.221:1081",
+    "protocol": "socks4",
+    "latency_ms": 1770,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "142.54.231.38:4145",
+    "protocol": "socks4",
+    "latency_ms": 1774,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "107.152.98.5:4145",
+    "protocol": "socks4",
+    "latency_ms": 1774,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "41.191.203.160:80",
+    "protocol": "http",
+    "latency_ms": 1783,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "192.252.210.233:4145",
+    "protocol": "socks4",
+    "latency_ms": 1785,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "202.83.30.96:80",
+    "protocol": "http",
+    "latency_ms": 1797,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "142.54.226.214:4145",
+    "protocol": "socks5",
+    "latency_ms": 1801,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "74.119.147.209:4145",
+    "protocol": "socks5",
+    "latency_ms": 1801,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "197.221.240.246:80",
+    "protocol": "http",
+    "latency_ms": 1812,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "192.252.208.67:14287",
+    "protocol": "socks4",
+    "latency_ms": 1831,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "197.221.240.178:80",
+    "protocol": "http",
+    "latency_ms": 1839,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "206.220.175.2:4145",
+    "protocol": "socks4",
+    "latency_ms": 1840,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "192.252.220.92:17328",
+    "protocol": "socks5",
+    "latency_ms": 1841,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "142.54.236.97:4145",
+    "protocol": "socks4",
+    "latency_ms": 1842,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "192.111.137.37:18762",
+    "protocol": "socks4",
+    "latency_ms": 1852,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "154.31.113.209:80",
+    "protocol": "http",
+    "latency_ms": 1862,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "142.54.237.34:4145",
+    "protocol": "socks4",
+    "latency_ms": 1863,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "67.201.59.70:4145",
+    "protocol": "socks4",
+    "latency_ms": 1874,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "212.114.194.74:80",
+    "protocol": "http",
+    "latency_ms": 1885,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "212.114.194.75:80",
+    "protocol": "http",
+    "latency_ms": 1891,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "94.182.177.92:80",
+    "protocol": "http",
+    "latency_ms": 1895,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "72.223.188.67:4145",
+    "protocol": "socks4",
+    "latency_ms": 1935,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "98.170.57.241:4145",
+    "protocol": "socks4",
+    "latency_ms": 1938,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "98.182.171.161:4145",
+    "protocol": "socks5",
+    "latency_ms": 1939,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "72.195.34.59:4145",
+    "protocol": "socks5",
+    "latency_ms": 1953,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "184.181.217.194:4145",
+    "protocol": "socks5",
+    "latency_ms": 1955,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "72.207.113.97:4145",
+    "protocol": "socks4",
+    "latency_ms": 1965,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "219.93.101.62:80",
+    "protocol": "http",
+    "latency_ms": 1998,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "192.111.130.5:17002",
+    "protocol": "socks5",
+    "latency_ms": 2007,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "184.181.217.210:4145",
+    "protocol": "socks4",
+    "latency_ms": 2045,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "213.246.56.156:9080",
+    "protocol": "http",
+    "latency_ms": 2061,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "51.178.142.1:80",
+    "protocol": "http",
+    "latency_ms": 2064,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "195.201.40.3:80",
+    "protocol": "http",
+    "latency_ms": 2075,
+    "timestamp": "2025-12-16 04:46"
+  },
+  {
+    "address": "223.204.48.124:8080",
+    "protocol": "http",
+    "latency_ms": 2076,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "201.222.50.218:80",
+    "protocol": "http",
+    "latency_ms": 2083,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "212.16.77.50:3128",
+    "protocol": "http",
+    "latency_ms": 2105,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "109.236.88.82:80",
+    "protocol": "http",
+    "latency_ms": 2136,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "154.61.76.24:8081",
+    "protocol": "http",
+    "latency_ms": 2149,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "45.80.215.245:80",
+    "protocol": "http",
+    "latency_ms": 2163,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "98.170.57.249:4145",
+    "protocol": "socks5",
+    "latency_ms": 2172,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "67.201.39.14:4145",
+    "protocol": "socks5",
+    "latency_ms": 2176,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "174.64.199.79:4145",
+    "protocol": "socks5",
+    "latency_ms": 2223,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "172.93.213.177:80",
+    "protocol": "http",
+    "latency_ms": 2264,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "184.178.172.13:15311",
+    "protocol": "socks5",
+    "latency_ms": 2269,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "50.203.147.156:80",
+    "protocol": "http",
+    "latency_ms": 2283,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "5.202.176.42:80",
+    "protocol": "http",
+    "latency_ms": 2308,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "78.26.146.16:443",
+    "protocol": "http",
+    "latency_ms": 2312,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "65.0.206.16:80",
+    "protocol": "http",
+    "latency_ms": 2323,
+    "timestamp": "2025-12-16 04:47"
+  },
+  {
+    "address": "107.148.201.157:80",
+    "protocol": "http",
+    "latency_ms": 2338,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "4.213.98.253:80",
+    "protocol": "http",
+    "latency_ms": 2359,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "159.223.32.95:8080",
+    "protocol": "http",
+    "latency_ms": 2379,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.119.22.156:8080",
+    "protocol": "http",
+    "latency_ms": 2385,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "142.54.226.214:4145",
+    "protocol": "socks4",
+    "latency_ms": 2390,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "38.54.9.151:3128",
+    "protocol": "http",
+    "latency_ms": 2394,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "8.148.22.214:8080",
+    "protocol": "http",
+    "latency_ms": 2397,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.121.182.88:8443",
+    "protocol": "http",
+    "latency_ms": 2399,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "213.142.156.97:80",
+    "protocol": "http",
+    "latency_ms": 2403,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.138.131.110:8081",
+    "protocol": "http",
+    "latency_ms": 2403,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "8.138.131.110:9080",
+    "protocol": "http",
+    "latency_ms": 2406,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "47.121.182.36:80",
+    "protocol": "http",
+    "latency_ms": 2408,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "47.121.182.88:9098",
+    "protocol": "http",
+    "latency_ms": 2409,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "47.121.182.36:8008",
+    "protocol": "http",
+    "latency_ms": 2409,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "176.126.103.194:44214",
+    "protocol": "http",
+    "latency_ms": 2415,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "8.148.4.166:9080",
+    "protocol": "http",
+    "latency_ms": 2416,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.134.149.133:9098",
+    "protocol": "http",
+    "latency_ms": 2418,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "192.252.208.70:14282",
+    "protocol": "socks5",
+    "latency_ms": 2423,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "123.30.154.171:7777",
+    "protocol": "http",
+    "latency_ms": 2426,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "47.109.83.196:8800",
+    "protocol": "http",
+    "latency_ms": 2430,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "180.242.158.58:80",
+    "protocol": "http",
+    "latency_ms": 2431,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "8.138.149.37:8443",
+    "protocol": "http",
+    "latency_ms": 2435,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.137.62.53:9080",
+    "protocol": "http",
+    "latency_ms": 2436,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "8.137.38.48:9080",
+    "protocol": "http",
+    "latency_ms": 2436,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.121.182.36:3128",
+    "protocol": "http",
+    "latency_ms": 2441,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "47.121.182.36:8080",
+    "protocol": "http",
+    "latency_ms": 2442,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "8.137.62.53:9098",
+    "protocol": "http",
+    "latency_ms": 2447,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "91.65.94.20:80",
+    "protocol": "http",
+    "latency_ms": 2456,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.137.38.48:80",
+    "protocol": "http",
+    "latency_ms": 2460,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.148.24.225:8080",
+    "protocol": "http",
+    "latency_ms": 2461,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.138.149.37:9098",
+    "protocol": "http",
+    "latency_ms": 2480,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "91.241.217.58:9090",
+    "protocol": "http",
+    "latency_ms": 2481,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.148.4.166:9098",
+    "protocol": "http",
+    "latency_ms": 2492,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.104.28.135:8080",
+    "protocol": "http",
+    "latency_ms": 2494,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "8.138.125.130:8080",
+    "protocol": "http",
+    "latency_ms": 2495,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "39.102.209.121:9098",
+    "protocol": "http",
+    "latency_ms": 2497,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "47.237.113.119:8008",
+    "protocol": "http",
+    "latency_ms": 2501,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "202.4.125.221:1130",
+    "protocol": "http",
+    "latency_ms": 2505,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "39.104.57.33:7777",
+    "protocol": "http",
+    "latency_ms": 2512,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "39.102.209.128:80",
+    "protocol": "http",
+    "latency_ms": 2512,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.137.13.191:9098",
+    "protocol": "http",
+    "latency_ms": 2516,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.119.20.8:8080",
+    "protocol": "http",
+    "latency_ms": 2519,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "47.121.133.212:8008",
+    "protocol": "http",
+    "latency_ms": 2520,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "39.102.210.222:8081",
+    "protocol": "http",
+    "latency_ms": 2524,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "39.104.59.56:8081",
+    "protocol": "http",
+    "latency_ms": 2537,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "39.102.213.50:80",
+    "protocol": "http",
+    "latency_ms": 2546,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "39.104.16.201:8443",
+    "protocol": "http",
+    "latency_ms": 2556,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "47.121.129.129:8080",
+    "protocol": "http",
+    "latency_ms": 2556,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "39.102.213.3:9098",
+    "protocol": "http",
+    "latency_ms": 2563,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "39.102.213.50:3128",
+    "protocol": "http",
+    "latency_ms": 2564,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "8.130.36.163:9098",
+    "protocol": "http",
+    "latency_ms": 2570,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "8.130.90.177:3128",
+    "protocol": "http",
+    "latency_ms": 2578,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "89.238.200.81:80",
+    "protocol": "http",
+    "latency_ms": 2588,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "200.59.191.232:999",
+    "protocol": "http",
+    "latency_ms": 2590,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "39.102.213.3:8008",
+    "protocol": "http",
+    "latency_ms": 2600,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "39.102.213.187:5060",
+    "protocol": "http",
+    "latency_ms": 2624,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.215.15.163:8081",
+    "protocol": "http",
+    "latency_ms": 2626,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "15.207.63.47:80",
+    "protocol": "http",
+    "latency_ms": 2635,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "39.102.211.64:8443",
+    "protocol": "http",
+    "latency_ms": 2660,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.221.118.5:9090",
+    "protocol": "http",
+    "latency_ms": 2676,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "5.231.204.52:80",
+    "protocol": "http",
+    "latency_ms": 2681,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "192.252.211.197:14921",
+    "protocol": "socks4",
+    "latency_ms": 2774,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "192.252.215.5:16137",
+    "protocol": "socks4",
+    "latency_ms": 2786,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "72.37.216.68:4145",
+    "protocol": "socks5",
+    "latency_ms": 2801,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "68.71.242.118:4145",
+    "protocol": "socks5",
+    "latency_ms": 2811,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "85.9.120.33:80",
+    "protocol": "http",
+    "latency_ms": 2818,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "192.111.135.18:18301",
+    "protocol": "socks4",
+    "latency_ms": 2832,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "192.252.216.81:4145",
+    "protocol": "socks5",
+    "latency_ms": 2840,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "68.71.245.206:4145",
+    "protocol": "socks4",
+    "latency_ms": 2845,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "184.170.245.148:4145",
+    "protocol": "socks4",
+    "latency_ms": 2847,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "34.140.137.151:80",
+    "protocol": "http",
+    "latency_ms": 2940,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "184.178.172.11:4145",
+    "protocol": "socks4",
+    "latency_ms": 2950,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "192.111.137.37:18762",
+    "protocol": "socks5",
+    "latency_ms": 2966,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "184.178.172.25:15291",
+    "protocol": "socks5",
+    "latency_ms": 2972,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "98.175.31.222:4145",
+    "protocol": "socks5",
+    "latency_ms": 2986,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "44.225.30.92:80",
+    "protocol": "http",
+    "latency_ms": 2996,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "98.170.57.249:4145",
+    "protocol": "socks4",
+    "latency_ms": 3022,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "68.1.210.163:4145",
+    "protocol": "socks5",
+    "latency_ms": 3049,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "144.202.113.89:80",
+    "protocol": "http",
+    "latency_ms": 3065,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "72.195.34.58:4145",
+    "protocol": "socks4",
+    "latency_ms": 3090,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "51.195.40.90:80",
+    "protocol": "http",
+    "latency_ms": 3100,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "5.75.200.75:80",
+    "protocol": "http",
+    "latency_ms": 3152,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "203.95.198.35:8080",
+    "protocol": "http",
+    "latency_ms": 3166,
+    "timestamp": "2025-12-16 04:46"
+  },
+  {
+    "address": "46.35.9.110:80",
+    "protocol": "http",
+    "latency_ms": 3171,
+    "timestamp": "2025-12-16 04:46"
+  },
+  {
+    "address": "5.75.198.72:80",
+    "protocol": "http",
+    "latency_ms": 3179,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "82.115.25.50:80",
+    "protocol": "http",
+    "latency_ms": 3180,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "39.102.214.152:9999",
+    "protocol": "http",
+    "latency_ms": 3182,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "197.221.249.196:80",
+    "protocol": "http",
+    "latency_ms": 3182,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "143.42.66.91:80",
+    "protocol": "http",
+    "latency_ms": 3196,
+    "timestamp": "2025-12-16 04:39"
+  },
+  {
+    "address": "65.108.103.19:80",
+    "protocol": "http",
+    "latency_ms": 3237,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "46.29.20.233:80",
+    "protocol": "http",
+    "latency_ms": 3237,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "20.42.119.47:80",
+    "protocol": "http",
+    "latency_ms": 3241,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "202.133.88.173:80",
+    "protocol": "http",
+    "latency_ms": 3249,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "64.79.70.59:80",
+    "protocol": "http",
+    "latency_ms": 3252,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "213.108.130.185:80",
+    "protocol": "http",
+    "latency_ms": 3269,
+    "timestamp": "2025-12-16 04:39"
+  },
+  {
+    "address": "202.178.120.30:1080",
+    "protocol": "socks4",
+    "latency_ms": 3283,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "188.65.89.225:80",
+    "protocol": "http",
+    "latency_ms": 3341,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "154.16.146.44:80",
+    "protocol": "http",
+    "latency_ms": 3358,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "45.59.186.60:80",
+    "protocol": "http",
+    "latency_ms": 3399,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "8.219.73.21:80",
+    "protocol": "http",
+    "latency_ms": 3423,
+    "timestamp": "2025-12-16 04:47"
+  },
+  {
+    "address": "8.138.131.110:9098",
+    "protocol": "http",
+    "latency_ms": 3426,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "74.249.180.117:3128",
+    "protocol": "http",
+    "latency_ms": 3432,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "192.73.244.36:80",
+    "protocol": "http",
+    "latency_ms": 3452,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "113.108.13.120:8083",
+    "protocol": "http",
+    "latency_ms": 3456,
+    "timestamp": "2025-12-16 04:39"
+  },
+  {
+    "address": "47.238.60.156:3129",
+    "protocol": "http",
+    "latency_ms": 3566,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.238.60.156:18081",
+    "protocol": "http",
+    "latency_ms": 3566,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "200.59.186.178:999",
+    "protocol": "http",
+    "latency_ms": 3577,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "47.238.60.156:6379",
+    "protocol": "http",
+    "latency_ms": 3597,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "20.27.219.85:8080",
+    "protocol": "http",
+    "latency_ms": 3640,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "8.210.17.35:8004",
+    "protocol": "http",
+    "latency_ms": 3658,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "191.252.204.220:8080",
+    "protocol": "http",
+    "latency_ms": 3682,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "209.13.186.20:80",
+    "protocol": "http",
+    "latency_ms": 3699,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "142.54.229.249:4145",
+    "protocol": "socks5",
+    "latency_ms": 3761,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "41.191.203.162:80",
+    "protocol": "http",
+    "latency_ms": 3775,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "47.238.130.212:443",
+    "protocol": "http",
+    "latency_ms": 3784,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.238.130.212:4145",
+    "protocol": "http",
+    "latency_ms": 3785,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.238.130.212:8443",
+    "protocol": "http",
+    "latency_ms": 3790,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "199.102.105.242:4145",
+    "protocol": "socks5",
+    "latency_ms": 3814,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "149.129.226.9:6379",
+    "protocol": "http",
+    "latency_ms": 3817,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "197.221.240.176:80",
+    "protocol": "http",
+    "latency_ms": 3821,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "104.37.135.145:4145",
+    "protocol": "socks4",
+    "latency_ms": 3843,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "41.220.16.209:80",
+    "protocol": "http",
+    "latency_ms": 3846,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "142.54.235.9:4145",
+    "protocol": "socks4",
+    "latency_ms": 3862,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "83.219.145.106:3128",
+    "protocol": "http",
+    "latency_ms": 3865,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "103.56.205.84:8080",
+    "protocol": "http",
+    "latency_ms": 3867,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "192.111.137.34:18765",
+    "protocol": "socks4",
+    "latency_ms": 3874,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "68.71.249.158:4145",
+    "protocol": "socks5",
+    "latency_ms": 3894,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "154.90.48.76:80",
+    "protocol": "http",
+    "latency_ms": 3895,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "195.231.69.203:80",
+    "protocol": "http",
+    "latency_ms": 3910,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "149.129.255.179:1081",
+    "protocol": "http",
+    "latency_ms": 3916,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "149.129.255.179:18080",
+    "protocol": "http",
+    "latency_ms": 3919,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.215.15.163:104",
+    "protocol": "http",
+    "latency_ms": 3921,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "206.220.175.2:4145",
+    "protocol": "socks5",
+    "latency_ms": 3932,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "198.8.94.170:4145",
+    "protocol": "socks4",
+    "latency_ms": 3932,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "142.54.228.193:4145",
+    "protocol": "socks4",
+    "latency_ms": 3935,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "147.231.163.133:80",
+    "protocol": "http",
+    "latency_ms": 3963,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "24.249.199.4:4145",
+    "protocol": "socks5",
+    "latency_ms": 3965,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "184.181.217.213:4145",
+    "protocol": "socks5",
+    "latency_ms": 3967,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "98.188.47.132:4145",
+    "protocol": "socks4",
+    "latency_ms": 3969,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "184.181.217.206:4145",
+    "protocol": "socks4",
+    "latency_ms": 3997,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "78.140.46.48:1080",
+    "protocol": "socks4",
+    "latency_ms": 4004,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "192.111.139.162:4145",
+    "protocol": "socks4",
+    "latency_ms": 4007,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "184.181.217.201:4145",
+    "protocol": "socks4",
+    "latency_ms": 4008,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "67.201.35.145:4145",
+    "protocol": "socks4",
+    "latency_ms": 4015,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "184.178.172.13:15311",
+    "protocol": "socks4",
+    "latency_ms": 4022,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "138.68.21.132:40467",
+    "protocol": "socks5",
+    "latency_ms": 4024,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "8.211.51.115:8443",
+    "protocol": "http",
+    "latency_ms": 4054,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "72.195.34.41:4145",
+    "protocol": "socks5",
+    "latency_ms": 4056,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "27.34.242.98:80",
+    "protocol": "http",
+    "latency_ms": 4061,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "142.54.237.38:4145",
+    "protocol": "socks4",
+    "latency_ms": 4069,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "174.64.199.82:4145",
+    "protocol": "socks5",
+    "latency_ms": 4102,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "178.18.241.49:80",
+    "protocol": "http",
+    "latency_ms": 4123,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "72.195.34.42:4145",
+    "protocol": "socks5",
+    "latency_ms": 4129,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "3.8.120.173:3128",
+    "protocol": "socks4",
+    "latency_ms": 4157,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "87.98.173.34:80",
+    "protocol": "http",
+    "latency_ms": 4166,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "98.178.72.21:10919",
+    "protocol": "socks5",
+    "latency_ms": 4174,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "47.91.89.3:5060",
+    "protocol": "http",
+    "latency_ms": 4183,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.91.110.148:443",
+    "protocol": "http",
+    "latency_ms": 4194,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "77.68.100.177:80",
+    "protocol": "http",
+    "latency_ms": 4197,
+    "timestamp": "2025-12-16 04:47"
+  },
+  {
+    "address": "47.89.159.212:1081",
+    "protocol": "http",
+    "latency_ms": 4210,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "45.10.163.12:80",
+    "protocol": "http",
+    "latency_ms": 4245,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "80.78.31.129:80",
+    "protocol": "http",
+    "latency_ms": 4255,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "194.28.162.12:1080",
+    "protocol": "socks5",
+    "latency_ms": 4263,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "47.251.87.199:5060",
+    "protocol": "http",
+    "latency_ms": 4304,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "45.13.226.125:80",
+    "protocol": "http",
+    "latency_ms": 4328,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "185.81.166.42:80",
+    "protocol": "http",
+    "latency_ms": 4332,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "52.87.167.25:80",
+    "protocol": "http",
+    "latency_ms": 4340,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "39.102.214.192:9080",
+    "protocol": "http",
+    "latency_ms": 4341,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.250.155.254:28",
+    "protocol": "http",
+    "latency_ms": 4347,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "47.250.177.202:8443",
+    "protocol": "http",
+    "latency_ms": 4436,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.237.2.245:5060",
+    "protocol": "http",
+    "latency_ms": 4445,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "51.178.76.203:80",
+    "protocol": "http",
+    "latency_ms": 4446,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "98.188.47.132:4145",
+    "protocol": "socks5",
+    "latency_ms": 4452,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "192.111.139.162:4145",
+    "protocol": "socks5",
+    "latency_ms": 4460,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "200.59.186.177:999",
+    "protocol": "http",
+    "latency_ms": 4487,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "44.213.1.118:80",
+    "protocol": "http",
+    "latency_ms": 4495,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "202.137.8.150:8080",
+    "protocol": "http",
+    "latency_ms": 4506,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "41.220.22.7:80",
+    "protocol": "http",
+    "latency_ms": 4507,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "212.114.194.79:80",
+    "protocol": "http",
+    "latency_ms": 4584,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "8.219.221.159:1100",
+    "protocol": "socks4",
+    "latency_ms": 4600,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "132.145.127.51:80",
+    "protocol": "http",
+    "latency_ms": 4609,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "124.108.6.20:8085",
+    "protocol": "http",
+    "latency_ms": 4634,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "39.104.27.89:3128",
+    "protocol": "http",
+    "latency_ms": 4657,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "45.190.170.254:999",
+    "protocol": "http",
+    "latency_ms": 4678,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "202.131.159.222:80",
+    "protocol": "http",
+    "latency_ms": 4724,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "156.146.56.231:8081",
+    "protocol": "http",
+    "latency_ms": 4736,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.251.87.74:8983",
+    "protocol": "http",
+    "latency_ms": 4744,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "185.88.141.109:80",
+    "protocol": "http",
+    "latency_ms": 4813,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.219.229.53:6379",
+    "protocol": "http",
+    "latency_ms": 4841,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "162.253.68.97:4145",
+    "protocol": "socks4",
+    "latency_ms": 4849,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "38.188.48.73:8080",
+    "protocol": "http",
+    "latency_ms": 4862,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "192.111.130.5:17002",
+    "protocol": "socks4",
+    "latency_ms": 4867,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "107.181.161.81:4145",
+    "protocol": "socks5",
+    "latency_ms": 4881,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "185.87.121.5:8975",
+    "protocol": "socks5",
+    "latency_ms": 4902,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "47.91.29.151:33427",
+    "protocol": "http",
+    "latency_ms": 4903,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "199.102.105.242:4145",
+    "protocol": "socks4",
+    "latency_ms": 4903,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "109.224.242.13:8085",
+    "protocol": "http",
+    "latency_ms": 4908,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "104.248.151.220:57554",
+    "protocol": "socks4",
+    "latency_ms": 4936,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "192.111.135.17:18302",
+    "protocol": "socks5",
+    "latency_ms": 4936,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "115.244.181.122:8080",
+    "protocol": "http",
+    "latency_ms": 4946,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "47.92.194.235:8008",
+    "protocol": "http",
+    "latency_ms": 4956,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "199.58.184.97:4145",
+    "protocol": "socks5",
+    "latency_ms": 4969,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "70.166.167.55:57745",
+    "protocol": "socks5",
+    "latency_ms": 4972,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "47.91.29.151:9080",
+    "protocol": "http",
+    "latency_ms": 4981,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "72.195.101.99:4145",
+    "protocol": "socks4",
+    "latency_ms": 4999,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "98.170.57.241:4145",
+    "protocol": "socks5",
+    "latency_ms": 5006,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "8.219.93.90:1111",
+    "protocol": "socks4",
+    "latency_ms": 5012,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "154.65.39.7:80",
+    "protocol": "http",
+    "latency_ms": 5019,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "192.111.137.35:4145",
+    "protocol": "socks5",
+    "latency_ms": 5027,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "47.250.159.65:9098",
+    "protocol": "http",
+    "latency_ms": 5072,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "47.116.181.146:8060",
+    "protocol": "http",
+    "latency_ms": 5095,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "188.166.99.123:8081",
+    "protocol": "http",
+    "latency_ms": 5125,
+    "timestamp": "2025-12-16 04:46"
+  },
+  {
+    "address": "135.181.154.225:80",
+    "protocol": "http",
+    "latency_ms": 5132,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "8.215.3.250:8008",
+    "protocol": "http",
+    "latency_ms": 5140,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "144.125.164.222:8081",
+    "protocol": "http",
+    "latency_ms": 5152,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "51.112.102.82:80",
+    "protocol": "http",
+    "latency_ms": 5152,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "119.214.232.23:1080",
+    "protocol": "socks5",
+    "latency_ms": 5167,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "8.130.74.114:9098",
+    "protocol": "http",
+    "latency_ms": 5191,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "197.221.249.199:80",
+    "protocol": "http",
+    "latency_ms": 5216,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.209.96.245:3128",
+    "protocol": "http",
+    "latency_ms": 5217,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "190.128.241.102:80",
+    "protocol": "http",
+    "latency_ms": 5219,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "3.8.120.173:3128",
+    "protocol": "socks5",
+    "latency_ms": 5223,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "47.251.73.54:9080",
+    "protocol": "http",
+    "latency_ms": 5251,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "64.227.10.215:80",
+    "protocol": "http",
+    "latency_ms": 5257,
+    "timestamp": "2025-12-16 04:47"
+  },
+  {
+    "address": "122.160.30.99:80",
+    "protocol": "http",
+    "latency_ms": 5267,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.91.109.17:123",
+    "protocol": "http",
+    "latency_ms": 5317,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "47.252.11.233:9080",
+    "protocol": "http",
+    "latency_ms": 5328,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "94.184.25.4:80",
+    "protocol": "http",
+    "latency_ms": 5337,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "212.33.248.45:1080",
+    "protocol": "socks4",
+    "latency_ms": 5400,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "72.205.0.93:4145",
+    "protocol": "socks4",
+    "latency_ms": 5448,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "8.211.42.167:25565",
+    "protocol": "http",
+    "latency_ms": 5448,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "95.216.49.153:80",
+    "protocol": "http",
+    "latency_ms": 5473,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "51.141.175.118:80",
+    "protocol": "http",
+    "latency_ms": 5475,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "8.220.141.8:50",
+    "protocol": "http",
+    "latency_ms": 5497,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "8.211.195.139:18080",
+    "protocol": "http",
+    "latency_ms": 5521,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.92.143.92:8081",
+    "protocol": "http",
+    "latency_ms": 5524,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "12.50.107.220:80",
+    "protocol": "http",
+    "latency_ms": 5537,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "47.91.121.127:50",
+    "protocol": "http",
+    "latency_ms": 5542,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.252.18.37:8443",
+    "protocol": "http",
+    "latency_ms": 5560,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.91.120.190:8080",
+    "protocol": "http",
+    "latency_ms": 5560,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.90.149.238:31281",
+    "protocol": "http",
+    "latency_ms": 5568,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "45.61.188.134:44499",
+    "protocol": "socks5",
+    "latency_ms": 5584,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "156.245.248.240:3128",
+    "protocol": "http",
+    "latency_ms": 5589,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "8.211.195.173:10001",
+    "protocol": "http",
+    "latency_ms": 5605,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.89.159.212:6379",
+    "protocol": "http",
+    "latency_ms": 5625,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.76.144.139:9080",
+    "protocol": "http",
+    "latency_ms": 5628,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.211.195.139:3128",
+    "protocol": "http",
+    "latency_ms": 5637,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.254.36.213:20",
+    "protocol": "http",
+    "latency_ms": 5651,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "62.109.19.5:80",
+    "protocol": "http",
+    "latency_ms": 5701,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "47.251.74.38:199",
+    "protocol": "http",
+    "latency_ms": 5721,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.251.74.38:3129",
+    "protocol": "http",
+    "latency_ms": 5724,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "184.170.249.65:4145",
+    "protocol": "socks4",
+    "latency_ms": 5737,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "177.43.72.250:3128",
+    "protocol": "http",
+    "latency_ms": 5752,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "202.181.16.45:52929",
+    "protocol": "socks5",
+    "latency_ms": 5785,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "47.56.110.204:8989",
+    "protocol": "http",
+    "latency_ms": 5795,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "95.173.218.73:8082",
+    "protocol": "http",
+    "latency_ms": 5824,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.212.165.164:51235",
+    "protocol": "http",
+    "latency_ms": 5837,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.251.74.38:161",
+    "protocol": "http",
+    "latency_ms": 5850,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.237.92.86:115",
+    "protocol": "http",
+    "latency_ms": 5871,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "8.212.168.170:1234",
+    "protocol": "http",
+    "latency_ms": 5881,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.220.204.92:9080",
+    "protocol": "http",
+    "latency_ms": 5882,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.213.134.213:9080",
+    "protocol": "http",
+    "latency_ms": 5888,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "192.252.220.92:17328",
+    "protocol": "socks4",
+    "latency_ms": 5904,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "182.253.111.12:80",
+    "protocol": "http",
+    "latency_ms": 5904,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "8.213.197.208:3128",
+    "protocol": "http",
+    "latency_ms": 5920,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "67.201.39.14:4145",
+    "protocol": "socks4",
+    "latency_ms": 5921,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "68.71.240.210:4145",
+    "protocol": "socks4",
+    "latency_ms": 5926,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "47.74.46.81:18080",
+    "protocol": "http",
+    "latency_ms": 5942,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.213.222.157:443",
+    "protocol": "http",
+    "latency_ms": 5952,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.221.138.111:3128",
+    "protocol": "http",
+    "latency_ms": 5954,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "102.223.9.53:80",
+    "protocol": "http",
+    "latency_ms": 5961,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "105.174.43.194:8080",
+    "protocol": "http",
+    "latency_ms": 5965,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "68.71.242.118:4145",
+    "protocol": "socks4",
+    "latency_ms": 5992,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "184.178.172.17:4145",
+    "protocol": "socks5",
+    "latency_ms": 6015,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "72.49.49.11:31034",
+    "protocol": "socks5",
+    "latency_ms": 6024,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "47.238.128.246:8888",
+    "protocol": "http",
+    "latency_ms": 6025,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "142.54.235.9:4145",
+    "protocol": "socks5",
+    "latency_ms": 6025,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "184.178.172.14:4145",
+    "protocol": "socks5",
+    "latency_ms": 6030,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "72.195.114.184:4145",
+    "protocol": "socks5",
+    "latency_ms": 6052,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "68.1.210.163:4145",
+    "protocol": "socks4",
+    "latency_ms": 6054,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "8.213.156.191:8888",
+    "protocol": "http",
+    "latency_ms": 6055,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "72.205.0.93:4145",
+    "protocol": "socks5",
+    "latency_ms": 6064,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "72.207.113.97:4145",
+    "protocol": "socks5",
+    "latency_ms": 6102,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "174.64.199.79:4145",
+    "protocol": "socks4",
+    "latency_ms": 6121,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "24.249.199.12:4145",
+    "protocol": "socks4",
+    "latency_ms": 6204,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "150.107.140.238:3128",
+    "protocol": "http",
+    "latency_ms": 6264,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "209.135.168.41:80",
+    "protocol": "http",
+    "latency_ms": 6274,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "193.107.126.91:80",
+    "protocol": "http",
+    "latency_ms": 6362,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "47.252.11.233:8081",
+    "protocol": "http",
+    "latency_ms": 6365,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "185.143.228.128:1080",
+    "protocol": "socks5",
+    "latency_ms": 6508,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "39.102.210.222:8081",
+    "protocol": "socks4",
+    "latency_ms": 6517,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "8.211.195.139:28737",
+    "protocol": "http",
+    "latency_ms": 6523,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.211.49.86:6666",
+    "protocol": "http",
+    "latency_ms": 6523,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.211.194.78:9080",
+    "protocol": "http",
+    "latency_ms": 6552,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.215.15.163:8081",
+    "protocol": "socks4",
+    "latency_ms": 6565,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "103.111.207.138:80",
+    "protocol": "http",
+    "latency_ms": 6592,
+    "timestamp": "2025-12-16 04:46"
+  },
+  {
+    "address": "68.71.249.153:48606",
+    "protocol": "socks5",
+    "latency_ms": 6594,
+    "timestamp": "2025-12-16 04:49"
+  },
+  {
+    "address": "8.211.200.183:8081",
+    "protocol": "http",
+    "latency_ms": 6633,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.238.134.126:81",
+    "protocol": "http",
+    "latency_ms": 6635,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "187.111.144.102:8080",
+    "protocol": "http",
+    "latency_ms": 6695,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "51.159.28.39:80",
+    "protocol": "http",
+    "latency_ms": 6697,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "213.5.17.84:1080",
+    "protocol": "socks5",
+    "latency_ms": 6741,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "47.251.74.38:4840",
+    "protocol": "http",
+    "latency_ms": 6743,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.213.195.191:8443",
+    "protocol": "http",
+    "latency_ms": 6749,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.220.205.172:9080",
+    "protocol": "http",
+    "latency_ms": 6820,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.220.204.215:8086",
+    "protocol": "http",
+    "latency_ms": 6888,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "103.253.43.144:80",
+    "protocol": "http",
+    "latency_ms": 6912,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "149.129.255.179:9098",
+    "protocol": "http",
+    "latency_ms": 6946,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.213.222.157:1080",
+    "protocol": "http",
+    "latency_ms": 6951,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "47.250.51.110:8081",
+    "protocol": "http",
+    "latency_ms": 6955,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "144.31.85.152:80",
+    "protocol": "http",
+    "latency_ms": 7095,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "80.78.31.24:80",
+    "protocol": "http",
+    "latency_ms": 7134,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "212.2.254.59:3128",
+    "protocol": "http",
+    "latency_ms": 7135,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "154.65.39.8:80",
+    "protocol": "http",
+    "latency_ms": 7169,
+    "timestamp": "2025-12-16 04:41"
+  },
+  {
+    "address": "39.102.214.152:9999",
+    "protocol": "socks4",
+    "latency_ms": 7198,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "50.203.147.153:80",
+    "protocol": "http",
+    "latency_ms": 7247,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "80.241.251.54:8080",
+    "protocol": "http",
+    "latency_ms": 7276,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "41.139.220.125:8080",
+    "protocol": "http",
+    "latency_ms": 7280,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "50.203.147.155:80",
+    "protocol": "http",
+    "latency_ms": 7280,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "8.213.128.6:4145",
+    "protocol": "http",
+    "latency_ms": 7377,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "46.62.171.144:80",
+    "protocol": "http",
+    "latency_ms": 7387,
+    "timestamp": "2025-12-16 04:40"
+  },
+  {
+    "address": "190.52.110.43:999",
+    "protocol": "http",
+    "latency_ms": 7409,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "62.60.195.94:80",
+    "protocol": "http",
+    "latency_ms": 7419,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "117.54.114.35:80",
+    "protocol": "http",
+    "latency_ms": 7426,
+    "timestamp": "2025-12-16 04:45"
+  },
+  {
+    "address": "47.121.133.212:8008",
+    "protocol": "socks4",
+    "latency_ms": 7445,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "8.148.4.166:9080",
+    "protocol": "socks4",
+    "latency_ms": 7453,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "103.154.170.249:8080",
+    "protocol": "http",
+    "latency_ms": 7462,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "8.211.194.85:808",
+    "protocol": "http",
+    "latency_ms": 7512,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "103.139.144.105:8080",
+    "protocol": "http",
+    "latency_ms": 7535,
+    "timestamp": "2025-12-16 04:47"
+  },
+  {
+    "address": "47.74.46.81:10000",
+    "protocol": "http",
+    "latency_ms": 7557,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "8.211.200.183:10000",
+    "protocol": "http",
+    "latency_ms": 7558,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "37.18.73.60:5566",
+    "protocol": "socks4",
+    "latency_ms": 7618,
+    "timestamp": "2025-12-16 04:48"
+  },
+  {
+    "address": "192.252.211.197:14921",
+    "protocol": "socks5",
+    "latency_ms": 7682,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "102.88.13.62:8080",
+    "protocol": "http",
+    "latency_ms": 7693,
+    "timestamp": "2025-12-16 04:46"
+  },
+  {
+    "address": "116.49.248.98:80",
+    "protocol": "http",
+    "latency_ms": 7700,
+    "timestamp": "2025-12-16 04:42"
+  },
+  {
+    "address": "15.204.243.210:80",
+    "protocol": "http",
+    "latency_ms": 7772,
+    "timestamp": "2025-12-16 04:43"
+  },
+  {
+    "address": "41.191.203.167:80",
+    "protocol": "http",
+    "latency_ms": 7783,
+    "timestamp": "2025-12-16 04:44"
+  },
+  {
+    "address": "199.102.107.145:4145",
+    "protocol": "socks5",
+    "latency_ms": 7895,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "104.200.135.46:4145",
+    "protocol": "socks5",
+    "latency_ms": 7907,
+    "timestamp": "2025-12-16 04:50"
+  },
+  {
+    "address": "145.100.181.155:80",
+    "protocol": "http",
+    "latency_ms": 7998,
+    "timestamp": "2025-12-16 04:42"
+  }
+]
