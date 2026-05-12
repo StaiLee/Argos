@@ -1,0 +1,20 @@
+# Binaires et exécutables
+argos
+*.exe
+*.out
+bin/
+
+# Fichiers de rapport générés
+*.html
+report*.json
+
+# Fichiers de configuration sensibles (Proxies, etc.)
+proxies*.json
+
+# Fichiers de dépendances (Go)
+vendor/
+
+# Fichiers système et IDE
+.DS_Store
+.vscode/
+.idea/
