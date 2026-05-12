@@ -3,7 +3,7 @@
 > **The Ultimate Tactical Network Scanner.**
 > *Speed. Precision. Cyber-Warfare UX.*
 
-![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)
+![Go Version](https://img.shields.io/badge/Go-1.22+-00ADD8?style=flat&logo=go)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)
 
@@ -15,41 +15,45 @@
 
 Built in pure Golang, it leverages a massive concurrent architecture to scan networks at blazing speeds while providing a cinematic, **"God Eye" TUI** (Terminal User Interface). Unlike traditional tools that output static text, Argos deploys a live, interactive war room dashboard.
 
-### ✨ OMEGA Features (v5.3.0)
+Under the hood, Argos v5.5 introduces kernel-level optimizations, zero-allocation memory pools, and advanced passive fingerprinting to match the capabilities of industry-standard tools like Nmap, but with a fraction of the memory footprint.
 
-* **👻 Ghost Protocol (NEW):** Integrated **Rotating Proxy Engine**. Load a list of SOCKS5/HTTP proxies to anonymize every request and evade IP bans.
-* **🧠 Identity Engine:** Active Service Fingerprinting via the `-deep` flag. Extracts SSH versions, FTP banners, and SMTP greetings.
-* **📺 God Eye Dashboard:** A responsive, split-view TUI featuring real-time telemetry, **network activity sparklines**, and system diagnostics (RAM/CPU/Goroutines).
-* **🔮 The Oracle Engine:** Automatic **Risk Assessment Scoring** (Critical/High/Low) and **Web Intelligence** extraction (HTTP Titles & Server Headers).
+### ✨ SUPREME Features (v5.5.0)
+
+* **🛰️ Ping Sweep Radar (NEW):** Intelligent host discovery via ultra-fast TCP ACK probes. Skips dead IPs automatically, saving 95% of scan time on empty subnets. Can be bypassed with `-Pn`.
+* **⚙️ Kernel Tuner (NEW):** Automatically maximizes the OS File Descriptor limits (`RLIMIT_NOFILE`) to allow massive concurrency (>65,000 sockets) without crashing.
+* **👻 Ghost Protocol:** Integrated **Rotating Proxy Engine**. Encapsulate raw TCP sockets into SOCKS5 tunnels to anonymize requests and evade IP bans.
+* **🧠 Identity Engine v2:** Active Service Fingerprinting via the `-deep` flag. 
+    * **TLS Interception:** Extracts Common Names (CN) to reveal hidden domains behind CDNs.
+    * **HTTP Probing:** Captures `<title>` tags and `Server` headers.
+    * **Sanitized Banner Grabbing:** Captures SSH/FTP banners with built-in XSS protection for HTML reporting.
+* **📺 God Eye Dashboard:** A responsive, split-view TUI featuring real-time telemetry, 60fps lock-free rendering, and system diagnostics.
+* **🔮 The Oracle Engine:** Automatic **Risk Assessment Scoring** (Critical/High/Low).
 * **🎨 Dynamic Tactical Themes:**
-    * 🔥 **BLITZ:** High-contrast Neon Red/Gold.
+    * 🔥 **BLITZ:** High-contrast Neon Red/Orange.
     * ❄️ **TITAN:** Deep Corporate Cyan/Blue.
     * 👻 **SHADOW:** Monochrome Stealth.
     * 🍀 **SCOUT:** Retro Matrix Green.
-* **🚀 Plasma Progress Bar:** A custom-rendered, fluid progress bar that reflects the exact operational theme colors.
 
 ---
 
 ## ⚡ Installation
 
 ### Prerequisites
-* **Go 1.21** or higher installed.
-* A terminal with **TrueColor** support (e.g., Terminator, iTerm2, Alacritty, VSCode).
+* **Go 1.22** or higher installed.
+* A terminal with **TrueColor** support.
+* Linux/macOS recommended for optimal kernel tuning (`ulimit` unlocking).
 
 ### Build from Source
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/StaiLee/Argos.git](https://github.com/StaiLee/Argos.git)
+git clone https://github.com/StaiLee/Argos.git
 cd Argos
 
-# 2. Install dependencies (BubbleTea framework & Proxy libs)
-go mod tidy
+# 2. Build the optimized industrial binary using the Makefile
+make build
 
-# 3. Build the binary
-go build -o argos main.go
-
-# 4. Install to system path
+# 3. (Optional) Install to system path
 sudo mv argos /usr/local/bin/
 ```
 
@@ -60,7 +64,7 @@ sudo mv argos /usr/local/bin/
 Argos uses a "Tactical Mode" system to simplify complex scanning operations.
 
 ```bash
-argos -host <TARGET> [FLAGS]
+./argos -host <TARGET> [FLAGS]
 ```
 
 ### 🛡️ Tactical Guide (Modes)
@@ -70,68 +74,66 @@ Argos comes with 4 battle-tested presets. Select one using the `-mode` flag.
 | Mode | Code | Description | Best Use Case |
 | :--- | :--- | :--- | :--- |
 | **SCOUT** | `-mode scout` | **(Default)** Balanced speed & noise. Top 1024 ports. | Initial Recon, Daily Checks. |
-| **SHADOW**| `-mode shadow`| **Stealth / Evasion.** Slow, high jitter, randomized order. | Red Teaming, Evasion, Anti-IDS. |
-| **BLITZ** | `-mode blitz` | **Aggressive Strike.** Max speed, no delay. Very noisy. | CTFs, Internal Labs, Fast Sweep. |
+| **SHADOW**| `-mode shadow`| **Stealth / Evasion.** Slow, high jitter. | Red Teaming, Evasion, Anti-IDS. |
+| **BLITZ** | `-mode blitz` | **Aggressive Strike.** Max speed (2000 threads). | CTFs, Internal Labs, Fast Sweep. |
 | **TITAN** | `-mode titan` | **Deep Audit.** Scans ALL 65,535 ports. Heavy load. | Full Vulnerability Assessment. |
 
 ### 🚩 Advanced Flags
 
 | Flag | Description |
 | :--- | :--- |
-| `-deep` | Enable Active Identity Grabbing. Extracts SSH versions, Web Headers, and FTP banners. Slower but richer. |
-| `-proxy` | **(NEW)** Enable **Ghost Mode**. Provide a path to a JSON proxy list (e.g., generated by *ProxyHarvester*). |
-| `-p` | Override ports (e.g., `-p 22,80` or `-p 1-5000`). |
-| `-random` | Force port shuffling to evade simple firewall rules. |
-| `-json` / `-html` | Export results to file. |
+| `-deep` | Enable the Identity Engine (HTTP Titles, TLS Certs, Banners). |
+| `-Pn` | **Skip Ping**. Force the scan of all IP addresses even if they seem dead. |
+| `-random` | Force port shuffling to evade linear firewall detection (IDS). |
+| `-proxy` | Enable **Ghost Mode**. Path to a JSON list of SOCKS5 proxies. |
+| `-p` | Override ports (e.g., `-p 22,80` or `-p 1-5000` or `-p all`). |
+| `-json` | Export results to secure JSON file. |
+| `-html` | Export results to secure HTML report. |
 
-### 💡 Advanced Examples
+### 💡 Tactical Examples
 
 **1. The "Ghost Mode" Scan (Anonymity)**
-Scan a target while rotating IP addresses for every connection using a proxy list.
+Scan a target while routing connections through SOCKS5 proxies with shuffled ports.
 ```bash
-argos -host target.com -proxy proxies_elite.json -mode scout
+./argos -host target.com -proxy proxies_elite.json -mode shadow -random
 ```
 
-**2. The "Deep Identity" Scan**
-Identify service versions (SSH, Apache, Nginx) alongside open ports.
+**2. Deep Infrastructure Audit**
+Scan all 65k ports, extract TLS certs, and generate a client-ready HTML report.
 ```bash
-argos -host 10.10.10.5 -mode scout -deep
+./argos -host 10.10.10.5 -mode titan -deep -p all -html report.html
 ```
 
-**3. Subnet Sweep (Blitz Mode)**
-Scan an entire range for Web Servers (80, 443, 8080) in seconds.
+**3. Subnet Sweep (Bypass Ping)**
+Scan an entire /24 network aggressively, forcing the scan even if ICMP/Ping is blocked.
 ```bash
-argos -host 192.168.1.0/24 -p 80,443,8080 -mode blitz
-```
-
-**4. Stealth Operation (Shadow Mode)**
-Bypass firewalls using randomized port shuffling and jitter delays.
-```bash
-argos -host target.corp -mode shadow -p 1-5000 -random
+./argos -host 192.168.1.0/24 -p 22,80,443,445 -mode blitz -Pn
 ```
 
 ---
 
-## 🏗️ Technical Architecture
+## 🏗️ Technical Architecture (Clean Architecture)
 
-Argos demonstrates the power of **Go Concurrency Patterns** mixed with the **ELM Architecture**:
+Argos demonstrates the ultimate power of **Go Concurrency Patterns** and **Zero-Allocation Memory Management**:
 
-1.  **The Feeder:** Pushes targets into a buffered channel.
-2.  **The Worker Pool:** Spawns 500-2000 micro-threads (Goroutines).
-3.  **The Ghost Engine:** Intercepts connections and routes them through a rotating SOCKS5/HTTP proxy pool.
-4.  **The Identity Module:** Performs active probes (Banner Grabbing, HEAD requests).
-5.  **The Oracle:** Analyzes responses to compute a Risk Score.
-6.  **The UI Engine (Bubble Tea):** Renders the TUI at 60fps.
+1.  **Kernel Tuner:** Overrides Linux FD limits via `syscall.Setrlimit`.
+2.  **The Feeder (CIDR Math):** Uses Bitwise operations to calculate IP ranges in microseconds without RAM overhead.
+3.  **Host Discovery:** Runs asynchronous TCP ACK probes to drop dead IPs instantly.
+4.  **Worker Pool:** Employs atomic counters (`sync/atomic`) and `sync.Pool` to reuse buffers, drastically reducing the Garbage Collector (GC) pressure.
+5.  **Ghost Engine:** Dynamically injects `ContextDialer` to mutate standard sockets into SOCKS5 wrapped connections.
+6.  **God Eye UI:** MVU (Model-View-Update) architecture rendering at 60fps without blocking network operations.
 
 ```mermaid
 graph TD;
-    Generator[Job Generator] -->|Randomized Push| Jobs(Channel: Jobs);
-    Jobs --> Worker1[Worker 1];
-    Jobs --> Worker2[Worker 2];
-    Worker1 -->|Ghost Engine - Proxy Rotation| Network((Target));
-    Network -->|Banner/Headers| Results(Channel: Results);
-    Results --> Oracle[The Oracle Engine];
-    Oracle -->|Telemetry & Logs| Dashboard[God Eye TUI];
+    Config[Target Parsed] --> Ping[TCP ACK Ping Sweep];
+    Ping -->|Host Alive| Feeder[Job Generator];
+    Ping -.->|Host Dead| Dropped[Ignored];
+    Feeder -->|Buffered Channel| Workers(Worker Pool: 500-2000 Goroutines);
+    Workers -->|Direct / SOCKS5 Proxy| Target((Target Network));
+    Target -->|Raw Sockets| Scanner[Scanner Engine];
+    Scanner -->|Port Open| Identity[Identity Engine - Deep Scan];
+    Identity -->|Banner/TLS/HTTP| Results(Results Channel);
+    Results --> Dashboard[God Eye TUI & Exporters];
 ```
 
 ---
@@ -139,7 +141,7 @@ graph TD;
 ## ⚠️ Disclaimer
 
 **Argos is intended for educational and authorized security testing purposes only.**
-Scanning networks without permission is illegal in many jurisdictions. The developers assume no liability for misuse of this tool.
+Scanning networks without explicit permission is illegal. The developer assumes no liability for misuse of this tool or damage caused by aggressive scanning modes.
 
 ---
 
