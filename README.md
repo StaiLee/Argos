@@ -3,9 +3,11 @@
 > **The Ultimate Tactical Network Scanner.**
 > *Speed. Precision. Cyber-Warfare UX.*
 
-![Go Version](https://img.shields.io/badge/Go-1.22+-00ADD8?style=flat&logo=go)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+[![CI](https://github.com/StaiLee/Argos/actions/workflows/ci.yml/badge.svg)](https://github.com/StaiLee/Argos/actions/workflows/ci.yml)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/StaiLee/Argos?logo=go&color=00ADD8)](https://github.com/StaiLee/Argos/blob/main/go.mod)
+[![License: MIT](https://img.shields.io/github/license/StaiLee/Argos?color=blue)](LICENSE)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)
+[![Stars](https://img.shields.io/github/stars/StaiLee/Argos?style=flat&logo=github&color=e3b341)](https://github.com/StaiLee/Argos/stargazers)
 
 ---
 
