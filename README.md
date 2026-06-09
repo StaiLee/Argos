@@ -1,13 +1,19 @@
+<p align="center">
+  <img src="./assets/banner.svg" alt="Argos" width="100%"/>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/github/actions/workflow/status/StaiLee/Argos/ci.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=BUILD" alt="badge"/>
+  <img src="https://img.shields.io/github/go-mod/go-version/StaiLee/Argos?style=for-the-badge&logo=go&logoColor=white&color=00ADD8&label=GO" alt="badge"/>
+  <img src="https://img.shields.io/github/license/StaiLee/Argos?style=for-the-badge&color=684A95&label=LICENSE" alt="badge"/>
+  <img src="https://img.shields.io/github/stars/StaiLee/Argos?style=for-the-badge&logo=github&color=e3b341&label=STARS" alt="badge"/>
+</p>
+
 # 👁️ ARGOS PANOPTES
 
 > **The Ultimate Tactical Network Scanner.**
 > *Speed. Precision. Cyber-Warfare UX.*
 
-[![CI](https://github.com/StaiLee/Argos/actions/workflows/ci.yml/badge.svg)](https://github.com/StaiLee/Argos/actions/workflows/ci.yml)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/StaiLee/Argos?logo=go&color=00ADD8)](https://github.com/StaiLee/Argos/blob/main/go.mod)
-[![License: MIT](https://img.shields.io/github/license/StaiLee/Argos?color=blue)](LICENSE)
-![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)
-[![Stars](https://img.shields.io/github/stars/StaiLee/Argos?style=flat&logo=github&color=e3b341)](https://github.com/StaiLee/Argos/stargazers)
 
 ---
 
